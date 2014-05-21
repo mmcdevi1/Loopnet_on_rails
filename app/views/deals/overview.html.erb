@@ -1,0 +1,117 @@
+<%= form_for(@deal, html: { id: "address_form" }, remote: true ) do |f| %>
+  
+  <header class="header bg-white b-b clearfix p-md">
+    <div class="row">
+      <div class="col-sm-4">
+        
+      </div>
+      <div class="col-sm-4">
+        <% if Rails.env.development? %>
+        50% complete
+        <div class="progress progress-xs" style="margin:0"> 
+          <div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
+          </div> 
+        </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4 text-right">
+        <a href="" class="btn btn-default" id="continue-btn">Continue</a>
+      </div>
+    </div>
+  </header>
+  <section class="scrollable wrapper w-f">
+    <div class="panel-body">
+      <div class="add-page">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <% if @deal.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+                <ul>
+                <% @deal.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <h1>Overview</h1>
+            <div class="form-group">
+              <%= f.label :deal_title, "Title" %>
+              <%= f.text_field :deal_title, class: "form-control" %>
+              <p class="text-muted">Descriptive title of the deal.</p>
+              <div id="test"></div>
+            </div>
+            <div class="form-group">
+              <%= f.label :deal_summary, "Summary" %>
+              <%= f.text_area :deal_summary, id: "some-textarea", class: "wysihtml5 form-control" %>
+            </div>
+           
+            <div class="actions">
+              <%= f.submit "Save", class: "btn btn-success", style: "display:none" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function() {
+
+    $('input').change(function() {
+
+      $('#address_form').submit(); 
+      $('#feedback').show();     
+      $('#feedback').text("saved").fadeOut('slow');
+
+    });
+
+    $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+      var val = $('iframe.wysihtml5-sandbox').contents().find('body').html();
+      $('#some-textarea').html(function() {
+        $(this).html(val);
+        $('#address_form').submit(); 
+      });
+    });
+
+    $('#continue-btn').click(function() {
+      $('#address_form').submit(); 
+    });
+
+    $('.nav-main li a').click(function() {
+      $('#address_form').submit();
+    });
+   
+
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

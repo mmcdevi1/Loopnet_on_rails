@@ -1,0 +1,42 @@
+<section class="hbox stretch">
+  <aside>
+    <section class="scrollable w-f">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Property Name</th>
+            <th>Owner</th>
+            <th>Space Type</th>
+            <th>Views</th>
+            <th>Avg View Time (min)</th>
+            <th>Most Active User</th>
+            <th>Percentage of Likes (%)</th>
+            <th>Added to Pipeline (%)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deals.each do |deal| %>
+            <tr>
+              <td><%= deal.property_name %></td>
+              <td><%= deal.owner_name %></td>
+              <td><%= deal.property_type %></td>
+              <td><%= deal.state %></td>
+              <td><%= deal.city %></td>
+              <td><%= deal.zipcode %></td>
+              <td><%= link_to 'Show', deal %></td>
+              <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+              <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  </aside>
+  <aside class="bg-white lt b-l b-light aside-md hidden-print p-lg">      
+    <a class="btn btn-info btn-block font-bold" data-target="#deals_modal" data-toggle="modal" href="#">
+      Add New Deal
+    </a>
+  </aside>
+</section>
+

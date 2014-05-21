@@ -1,0 +1,197 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap-wysihtml5
+ *= require bootstrap
+ *= require animate
+ *= require font-awesome.min
+ *= require icon
+ *= require font
+ *= require app
+ *= require_self
+*/
+.header a {
+	color: #333;
+}
+
+* {
+	outline: none !important;
+	letter-spacing: normal;
+}
+html, body, #wrapper {
+    height: 100%;
+}
+body {
+	color: #55606e;
+}
+.white-bg {
+    background: #fff;
+}
+body.devise {
+    background: #fff;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;   
+    height: 100%;     
+}
+.devise .form-control {
+    height: 45px;
+}
+.upload-dashed {
+background-color: #f2f2f2;
+border: 2px dashed #d9d9d9;
+text-align: center;
+padding: 40px 30px;
+width: 150px;
+height: 150px;
+float: left;
+margin-right: 20px;
+}
+.center {
+text-align: center;
+}
+.logo-outline {
+    background: #f2f2f2;
+    border: 1px dashed #d9d9d9;
+    padding: 30px;
+}
+.template-widget {
+padding: 5px;
+border: 1px solid #e0e4e8;
+
+border-radius: 2px;
+
+margin-bottom: 20px;
+}
+.template-widget-content {
+text-align: center;
+padding: 20px;
+}
+
+
+* {
+    outline: none !important;
+    margin: 0; 
+    padding: 0;
+}
+#page {
+    display:table;
+    overflow:hidden;
+    margin:0px auto;
+}
+*:first-child+html #page {
+    position:relative;
+}/*ie7*/
+* html #page {
+    position:relative;
+}/*ie6*/
+
+#content_container{
+    display:table-cell;
+    vertical-align: middle;
+}
+*:first-child+html #content_container{
+    position:absolute;
+    top:50%;
+    }/*ie7*/
+* html #content_container{
+    position:absolute;
+    top:50%;
+    }/*ie6*/
+
+*:first-child+html #content{
+    position:relative;
+    top:-50%;
+    }/*ie7*/
+* html #content{
+    position:relative;
+    top:-50%;
+    }/*ie6*/
+
+#page{
+    height:100%;
+    width:465px;
+}
+
+iframe {
+    width: 100%;
+    border: none;
+    height:100%;
+}
+
+.accordian .panel {
+    box-shadow: none;
+    margin: 0 0 10px 0;
+}
+.accordian .panel:last-child {
+    padding-bottom: 300px;
+}
+.accordian .panel .panel-collapse {
+    padding:10px; 
+    background: #f5f5f5;
+    border: 1px solid #efefef;
+}
+.accordion-toggle {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+}
+.accordion-toggle i {
+    margin-top: 3px;
+}
+.accordian .panel .panel-collapse .form-group:last-child {
+    margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
