@@ -1,16 +1,110 @@
-<section class="">
-  
-</section>
-<aside class="bg-white lt b-l b-light aside-lg hidden-print">          
+<section>
   <section class="vbox">
-     <section class="w-f scrollable">
-      <div class=slim-scroll data-height=auto data-disable-fade-out=true data-distance=0 data-size=10px data-railOpacity=0.2>
-        <!-- nav -->                 
-        <nav class="nav-primary hidden-xs">
-         
-        </nav>
-        <!-- / nav -->
+    <header class="header bg-white b-b clearfix p-md box-shadow">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="btn-group"> 
+            <button type="button" class="btn btn-sm btn-bg btn-default">
+              <i class="i i-list2"></i>
+            </button> 
+            <button type="button" class="btn btn-sm btn-bg btn-default">
+              <i class="i i-grid"></i>
+            </button> 
+          </div>
+        </div>
+        <div class="col-sm-4">
+          
+        </div>
+        <div class="col-sm-4 text-right">
+          
+        </div>
+      </div>
+    </header>
+    <section class="scrollable top60 wrapper w-f">
+      <div class="panel-body">
+        <p class="bold">
+          Showing 
+          <span class="blue">
+            <%= @deals.all.count %>
+          </span> 
+          of the best properties for you
+        </p>
+        <% @deals.each do |deal| %>
+          <p class="market-time-ago">Added <%= time_ago_in_words(deal.created_at) %> ago</p>
+          <div class="market-widget" id="<%= dom_id(deal) %>">
+            <div class="market-widget-top">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3 class="blue"><%= deal.property_name %></h3>
+                  <p class="market-time-ago">Irvington, NY East Gate Capital, LLC</p>
+                </div>
+                <div class="col-sm-6">
+                  <div class="pull-right text-right">
+                    <span class="text-muted">Broker:</span><br>
+                    <%= deal.user.firstname %> <%= deal.user.lastname %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="market-widget-content">
+              <div class="clearfix">
+                <div class="market-widget-left">
+                  <%= image_tag('office.jpg', class: "img-responsive") %>
+                </div>
+                <div class="market-widget-right">
+                  <table class="table text-center">
+                    <thead class="market-table">
+                      <tr>
+                        <td>Offering Type</td>
+                        <td>Annual Return</td>
+                        <td>Term</td>
+                        <td>Space Type</td>
+                        <td>Class</td>
+                        <td>% Leased</td>
+                      </tr>
+                    </thead>
+                    <tbody class="market-table">
+                      <tr>
+                        <td>Equity</td>
+                        <td>12%</td>
+                        <td>24 mo</td>
+                        <td>Office</td>
+                        <td>A</td>
+                        <td>78</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="pull-right" style="margin-top:10px;">
+                    <button class="btn btn-danger btn-shadow" id="btn-market-<%= deal.id %>">
+                      Add to Pipeline
+                    </button>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </section>
   </section>
-</aside>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

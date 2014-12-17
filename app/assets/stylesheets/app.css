@@ -4,9 +4,9 @@ html {
 }
 body {
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: #788288;
-  /*background-color: transparent;*/
+  background-color: #f5f5f5;
   -webkit-font-smoothing: antialiased;
   line-height: 1.53846154;
 }
@@ -18,6 +18,7 @@ body {
 .h6 {
   margin: 0;
 }
+
 a {
   color: #3c4144;
   text-decoration: none;
@@ -167,7 +168,7 @@ a:hover .caret-white {
   width: 200px;
 }
 .input-s-lg {
-  width: 250px;
+  width: 450px;
 }
 .input-group-addon {
   border-color: #cbd5dd;
@@ -685,6 +686,9 @@ body.container {
   .vbox > header ~ section {
     top: 50px;
   }
+   .vbox > header ~ section.top60 {
+    top: 61px;
+  }
   .vbox > header.header-md ~ section {
     top: 60px;
   }
@@ -857,7 +861,7 @@ body.container {
   z-index: 2;
 }
 .nav-primary ul.nav > li > a {
-  padding: 8px 15px;
+  padding: 0px;
   position: relative;
   -webkit-transition: background-color .2s ease-in-out 0s;
   transition: background-color .2s ease-in-out 0s;
@@ -1019,6 +1023,8 @@ body.container {
   }
   .header-md .navbar-brand img {
     max-height: 30px;
+    position:relative;
+    top:4px;
   }
   .header-md .navbar-nav > li > a {
     padding: 20px;
@@ -1457,10 +1463,11 @@ fieldset[disabled] .btn-warning.active {
   background-color: #fcc633;
   border-color: #fcc633;
 }
+
 .btn-danger {
   color: #fff !important;
-  background-color: #e33244;
-  border-color: #e33244;
+  background-color: #ff5a5f;
+  border-color: #e63136;  
 }
 .btn-danger:hover,
 .btn-danger:focus,
@@ -1493,6 +1500,10 @@ fieldset[disabled] .btn-danger:active,
 fieldset[disabled] .btn-danger.active {
   background-color: #e33244;
   border-color: #e33244;
+}
+.btn-danger.lt {
+  background: #ef6952 !important;
+  border-color: #ef6952;
 }
 .btn-dark {
   color: #fff !important;
@@ -1533,7 +1544,15 @@ fieldset[disabled] .btn-dark.active {
 }
 .btn {
   font-weight: 500;
-  border-radius: 2px;
+  border-radius: 2px;  
+  text-transform:uppercase;
+  font-size:10px;  
+  padding: 7px 12px 6px 12px;
+  font-family:'AvenirLT-Black';
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.29);
+}
+.btn-shadow {
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.29), inset 0px 1px 0px rgba(255,255,255,0.27);
 }
 .btn-icon {
   padding-left: 0 !important;
@@ -2096,7 +2115,7 @@ fieldset[disabled] .btn-dark.active {
   background-color: #f2f4f8;
 }
 .bg-dark {
-  background-color: #222733;
+  background-color: #373942;
   color: #7a87a7;
 }
 .bg-dark.lt,
@@ -2639,7 +2658,7 @@ fieldset[disabled] .btn-dark.active {
   background-color: #ffc017 !important;
 }
 .bg-danger {
-  background-color: #e33244;
+  background-color: #ff5a5f;
   color: #fce5e8;
 }
 .bg-danger.lt,
@@ -2734,7 +2753,7 @@ fieldset[disabled] .btn-dark.active {
   color: #788288;
 }
 .bg-white a {
-  color: #868686;
+  color: #8991a6;
 }
 .bg-white a.dashboard {
   color: #F1C309;
@@ -3010,8 +3029,9 @@ fieldset[disabled] .btn-dark.active {
 .active > .auto .text-active {
   display: inline-block !important;
 }
-.box-shadow {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 1px 0 rgba(0,0,0,0.05);
+.box-shadow,
+.market-widget {
+  box-shadow: 0 2px 3px rgba(0,0,0,0.06);
 }
 .wrapper-xxs {
   padding: 4px 6px;
@@ -3053,19 +3073,19 @@ fieldset[disabled] .btn-dark.active {
   border: 1px solid rgba(0,0,0,0.05);
 }
 .b-a {
-  border: 1px solid #eaeef1;
+  border: 1px solid #d4d9e0;
 }
 .b-t {
-  border-top: 1px solid #eaeef1;
+  border-top: 1px solid #d4d9e0;
 }
 .b-r {
-  border-right: 1px solid #eaeef1;
+  border-right: 1px solid #d4d9e0;
 }
 .b-b {
-  border-bottom: 1px solid #eaeef1;
+  border-bottom: 1px solid #d4d9e0;
 }
 .b-l {
-  border-left: 1px solid #eaeef1;
+  border-left: 1px solid #d4d9e0;
 }
 .b-light {
   border-color: #e1e6ef;
@@ -3945,15 +3965,19 @@ bottom: -7px;
   border-bottom: 0px;
 }
 .table {
-  border:none ;
+  border:none;   
 }
 .table > thead {
   background:#f6f7fa;
 }
+.table > thead.market-table,
+.table > tbody.market-table {
+  background: #fbfaf7;
+  border-bottom: 1px solid #e9e8e6;
+}
 .table > thead > tr {
   color: #999;
-  text-transform: uppercase;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 

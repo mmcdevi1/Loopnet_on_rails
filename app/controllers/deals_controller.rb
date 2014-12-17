@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :set_deal, except: [:index, :new]
+  before_action :set_deal, except: [:index, :new, :create]
 
   # GET /deals
   # GET /deals.json
@@ -14,7 +14,7 @@ class DealsController < ApplicationController
 
   # GET /deals/new
   def new
-    @deal = Deal.new
+    @deal = current_user.deals.new
   end
 
   # GET /deals/1/edit
@@ -39,10 +39,9 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = current_user.deals.new(deal_params)
-
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to edit_deal_path(@deal), notice: 'Saved.' }
+        format.html { redirect_to deals_address_path(@deal), notice: 'Saved.' }
         format.json { render action: 'show', status: :created, location: @deal }
       else
         format.html { render action: 'new' }

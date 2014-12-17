@@ -1,43 +1,7 @@
-<aside class="bg-white b-r aside hidden-print">
+<aside class="bg-dark lter b-r aside hidden-print nav-xs">
   <section class="vbox">
     <nav class="nav-primary hidden-xs">
-      <ul class="nav nav-main" data-ride="collapse">
-        <li>
-          <a href="" class="auto">
-            <i class="i i-statistics icon">
-            </i>
-            <span class="font-bold">Dashboard</span>
-          </a>
-        </li>
-        <li>
-         <%= link_to market_path, class: "auto" do %>
-            <i class="i i-map icon">
-            </i>
-            <span class="font-bold">Market</span>
-          </a>
-        <% end %>
-        <li>
-          <%= link_to deals_path, class: "auto" do %>
-            <i class="i i-stack icon">
-            </i>
-            <span class="font-bold">My Pipeline</span>
-          <% end %>
-        </li>
-        <li>
-          <a href="" class="auto">
-            <i class="i i-calendar icon">
-            </i>
-            <span class="font-bold">Calendar</span>
-          </a>
-        </li>
-        <li>
-          <a href="" class="auto">
-            <i class="i i-users3 icon">
-            </i>
-            <span class="font-bold">Contacts</span>
-          </a>
-        </li>
-      </ul>
+      
     </nav>
     <% unless params[:action] == "index" && params[:controller] == "deals" %>
       <footer class="footer hidden-xs no-padder text-center-nav-xs"> 

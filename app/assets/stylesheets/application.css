@@ -17,6 +17,41 @@
  *= require app
  *= require_self
 */
+@font-face{
+    font-family:'AvenirLT-Medium';
+    src:url('/assets/avenirlt-medium.eot');
+    src:url('/assets/avenirlt-medium.eot?#iefix') format("embedded-opentype"),
+        url('/assets/avenirlt-medium.woff') format("woff"),
+        url('/assets/avenirlt-medium.ttf') format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Roman';
+    src:url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-roman.eot");
+    src:url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-roman.eot?#iefix") format("embedded-opentype"),
+        url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-roman.woff") format("woff"),
+        url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-roman.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Heavy';
+    src:url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-heavy.eot");
+    src:url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-heavy.eot?#iefix") format("embedded-opentype"),
+        url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-heavy.woff") format("woff"),
+        url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-heavy.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Oblique';
+    src:url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-oblique.eot");
+    src:url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-oblique.eot?#iefix") format("embedded-opentype"),
+        url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-oblique.woff") format("woff"),
+        url("http://mike.60eastdesigns.com/wp-content/themes/mcdevitt/assets/fonts/avenirlt-oblique.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Black';
+    src:url('/assets/avenirlt-black.eot');
+    src:url('/assets/avenirlt-black.eot?#iefix') format("embedded-opentype"),
+        url('/assets/avenirlt-black.woff') format("woff"),
+        url('/assets/avenirlt-black.ttf') format("truetype")
+}
 .header a {
 	color: #333;
 }
@@ -30,6 +65,7 @@ html, body, #wrapper {
 }
 body {
 	color: #55606e;
+    font-family:'AvenirLT-Medium';
 }
 .white-bg {
     background: #fff;
@@ -41,6 +77,12 @@ body.devise {
     -o-background-size: cover;
     background-size: cover;   
     height: 100%;     
+}
+.bold {
+  font-family:'AvenirLT-Black';
+}
+.blue {
+    color: #398ae4;
 }
 .devise .form-control {
     height: 45px;
@@ -150,11 +192,49 @@ iframe {
 .accordian .panel .panel-collapse .form-group:last-child {
     margin-bottom: 0px;
 }
-
-
-
-
-
+.nav-sm-title {
+    font-size: 11px;
+    color: #c7c7c7;
+    text-transform: uppercase;
+    font-family:'AvenirLT-Black';
+}
+.market-widget {
+    border: 1px solid #d4d9df;
+    margin-bottom:40px;
+    width: 836px;
+    background: #fff;
+}
+.market-time-ago {
+    font-size: 10px;
+    color: #999999;
+    text-transform: uppercase;
+    margin: 0;
+}
+.market-widget-top {
+    padding: 10px 10px 5px 10px;
+    font-family: 'AvenirLT-Black';
+    border-bottom: 1px solid #e9e8e6;
+}
+.market-widget-top h3 {
+    margin: 0;
+    padding: 0;
+}
+.market-widget-content {
+    padding: 10px;
+}
+.market-widget-right {
+    float: right;
+    width: 80%;
+}
+.market-widget-left {
+    float: left;
+    width: 20%;
+    padding: 0px;
+    
+}
+.market-widget-right .table {
+    margin:0;
+}
 
 
 

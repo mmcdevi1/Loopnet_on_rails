@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html class="app">
-	<%= render 'layouts/head' %>
-	<body class="proximanova">
-		<section class="hbox stretch">
-      <%= render 'layouts/aside_xs' %>
-    	<%= render 'layouts/aside' %>
+  <%= render 'layouts/head' %>
+  <body>
+    <section class="hbox stretch">
       <section id="content">
         <section class="hbox stretch">
-        	<section>
-	        	<section class="vbox">
-		        	<%= render 'layouts/header' %>
-		        	<% flash.each do |type, message| %>
-								<div class="alert <%= flash_class type %>" id="alert-fadeout">
-									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-									<%= message %>
-								</div>
-							<% end %>		 
-		          <%= yield %>
-		        </section> 
-		      </section> 
-		    </section>
+          <section>
+            <section class="vbox">
+              <%= render 'layouts/header' %>
+              <% flash.each do |type, message| %>
+                <div class="alert <%= flash_class type %>" id="alert-fadeout">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <%= message %>
+                </div>
+              <% end %> 
+              <section class="hbox stretch">
+                <aside class="bg-white aside hidden-print b-r">          
+                  <section class="vbox">
+                     <section class="w-f scrollable">
+                      <div class=slim-scroll data-height=auto data-disable-fade-out=true data-distance=0 data-size=10px data-railOpacity=0.2>
+                        <!-- nav -->                 
+                        <nav class="nav-primary hidden-xs" style="padding:20px;">
+                          <%= link_to "Add New Deal", new_deal_path, class: "btn btn-danger btn-block btn-shadow" %>
+                          <div class="hidden-nav-xs m-t-lg m-b-sm nav-sm-title">Menu</div>
+                          <ul class="nav nav-main" data-ride="collapse">
+                            <li>
+                              <%= link_to root_path, class: "auto" do %>
+                                <span class="">Dashboard</span>
+                              <% end %>
+                            </li>
+                            <li>
+                             <%= link_to market_path, class: "auto" do %>
+                                <span class="">Market</span>                              
+                              <% end %>
+                            <li>
+                              <%= link_to deals_path, class: "auto" do %>
+                                <span class="">My Pipeline</span>
+                              <% end %>
+                            </li>
+                            <li>
+                              <a href="" class="auto">
+                                <span class="">Calendar</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="" class="auto">
+                                <span class="">Contacts</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                        <!-- / nav -->
+                      </div>
+                    </section>
+                  </section>
+                </aside>
+                <%= yield %>
+              </section>   
+            </section> 
+          </section> 
+        </section>
         <a href="#" class="hide nav-off-screen-block" 
-        	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
+           data-toggle="class:nav-off-screen" data-target="#nav"></a>
       </section>
     </section>
     

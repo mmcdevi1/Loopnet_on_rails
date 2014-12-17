@@ -1,16 +1,14 @@
 class MarketPlacesController < ApplicationController
 
-	layout :layout
+	
 
 	def index
-		@deals = Deal.all
+		@deals = Deal.all.order("created_at DESC")
 	end
 
 
 
-	def layout
-		"market"
-	end
+	
 
 
 

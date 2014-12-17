@@ -2,8 +2,6 @@ Pipeline::Application.routes.draw do
   
   resources :deals
 
-  resources :brokers_steps
-
   get '/deals/:id/property', to: 'deals#property_information', as: :deals_property
   get '/deals/:id/address', to: 'deals#address', as: :deals_address
   get '/deals/:id/overview', to: 'deals#overview', as: :deals_overview
