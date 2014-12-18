@@ -263,6 +263,8 @@ a.list-group-item:focus {
 }
 .panel {
   border-radius: 2px;
+  border: 1px solid #d4d9df;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.06);
 }
 .panel.panel-default {
   border-color: #eaeef1;
@@ -643,7 +645,7 @@ body.container {
     top:60px;
   }
   .app .vbox form header + .scrollable {
-    top:125px;
+    top:60px;
   }
   .app .vbox.flex > section > section {
     overflow: auto;
