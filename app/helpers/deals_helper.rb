@@ -9,6 +9,15 @@ module DealsHelper
 	  end
 	end
 
+  def state_select
+    @deal = Deal.find(params[:id])
+    if (params[:action] == "address" && params[:controller] == "deals") && !@deal.state.nil?
+      return @deal.state
+    else
+      return "Select State"
+    end
+  end
+
 
 
 

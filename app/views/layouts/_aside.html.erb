@@ -1,44 +1,40 @@
-<% unless params[:action] == "index" && params[:controller] == "deals" %>
-  <!-- .aside -->
-  <aside class="bg-light lter b-r b-light aside-md hidden-print <%= p_lg %>" id="aside_toggle">          
-    <section class="vbox">
-       <section class="w-f scrollable">
-        <div class=slim-scroll data-height=auto data-disable-fade-out=true data-distance=0 data-size=10px data-railOpacity=0.2>
-          <!-- nav -->                 
-          <nav class="nav-primary hidden-xs">
-            <%= new_deal_btn %>
-            <%= market_places_aside %><%# render market places aside if controller is market places %>
-            <%= broker_form_aside %><%# render deals aside if controller is deals %>
-          </nav>
-          <!-- / nav -->
-        </div>
-      </section>
-    </section>
-  </aside>
-  <!-- /.aside -->
-  <!-- Modal -->
-  <% unless params[:action] == "edit" %>
-  <div class="modal fade" id="deals_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <%= form_for(@deal) do |f| %>
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Create New Deal</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <%= f.label :property_name %>
-            <%= f.text_field :property_name, class: "form-control" %>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <%= f.submit "Continue", class: "btn btn-success" %>
-        </div>
+<aside class="bg-white aside hidden-print b-r">          
+  <section class="vbox">
+     <section class="w-f scrollable">
+      <div class=slim-scroll data-height=auto data-disable-fade-out=true data-distance=0 data-size=10px data-railOpacity=0.2>
+        <!-- nav -->                 
+        <nav class="nav-primary hidden-xs" style="padding:20px;">
+          <%= link_to "Add New Deal", new_deal_path, class: "btn btn-danger btn-block btn-shadow" %>
+          <div class="hidden-nav-xs m-t-lg m-b-sm nav-sm-title">Menu</div>
+          <ul class="nav nav-main" data-ride="collapse">
+            <li>
+              <%= link_to root_path, class: "auto" do %>
+                <span class="">Dashboard</span>
+              <% end %>
+            </li>
+            <li>
+             <%= link_to market_path, class: "auto" do %>
+                <span class="">Market</span>                              
+              <% end %>
+            <li>
+              <%= link_to deals_path, class: "auto" do %>
+                <span class="">My Pipeline</span>
+              <% end %>
+            </li>
+            <li>
+              <a href="" class="auto">
+                <span class="">Calendar</span>
+              </a>
+            </li>
+            <li>
+              <a href="" class="auto">
+                <span class="">Contacts</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- / nav -->
       </div>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
-<% end %>
+    </section>
+  </section>
+</aside>

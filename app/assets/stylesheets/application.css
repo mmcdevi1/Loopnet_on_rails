@@ -64,7 +64,7 @@ html, body, #wrapper {
     height: 100%;
 }
 body {
-	color: #55606e;
+	color: #565a5c;
     font-family:'AvenirLT-Medium';
 }
 .white-bg {
@@ -235,10 +235,32 @@ iframe {
 .market-widget-right .table {
     margin:0;
 }
-
-
-
-
+.new-deal .form-group {
+    margin: 0;
+    padding: 15px;
+    border-bottom: 1px solid #e7e7e7;
+}
+.new-deal .form-group:last-child {
+    border-bottom: none;
+}
+.new-deal .form-control {
+    border: none;
+}
+.new-deal label.control-label {
+    text-align: left;
+    font-weight: 700;
+}
+.no-text-shadow {
+    text-shadow: none;
+}
+.btn-link:hover {
+    text-decoration: none;
+}
+#feedback {
+    position: absolute;
+    top: 300px;
+    right: 300px;
+}
 
 
 

@@ -78,6 +78,12 @@
 		$(this).slider();
 	});
 
+	// spinner
+	$("input[data-ride='spinner']").each(function(){
+		var $options = $(this).data();
+		$(this).TouchSpin($options);
+	});
+
 	// sortable
 	if ($.fn.sortable) {
 	  $('.sortable').sortable();

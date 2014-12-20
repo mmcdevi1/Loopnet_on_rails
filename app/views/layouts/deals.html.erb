@@ -17,7 +17,17 @@
             <section class="hbox stretch">
               <section>
                 <section class="vbox">
-                  <%= yield %>
+                  <header class="header bg-white b-b clearfix p-md box-shadow">
+                        
+                  </header>
+                  <section>
+                    <section class="hbox stretch">                      
+                      <%= render 'layouts/aside/brokerform_aside' %>
+                      <section class="scrollable wrapper w-f">
+                        <%= yield %>
+                      </section>
+                    </section><!-- end hbox stretch -->
+                  </section><!-- end section -->   
                 </section><!-- end vbox -->    
               </section><!-- end section -->     
             </section><!-- end hbox stretch -->

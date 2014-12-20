@@ -30,5 +30,12 @@
   <%= @deal.zipcode %>
 </p>
 
+<p>Contacts</p>
+<% @contacts.each do |c| %>
+  <div>
+    <%= c.full_name %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_deal_path(@deal) %> |
 <%= link_to 'Back', deals_path %>

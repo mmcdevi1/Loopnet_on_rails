@@ -1,67 +1,60 @@
-
-  
-  <header class="header bg-white b-b clearfix p-md">
+<div id="feedback"></div>
+<div class="panel-body">
+  <div class="add-page">
     <div class="row">
-      <div class="col-sm-4">
-        
-      </div>
-      <div class="col-sm-4">
-        <% if Rails.env.development? %>
-        50% complete
-        <div class="progress progress-xs" style="margin:0"> 
-          <div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
-          </div> 
-        </div>
-        <% end %>
-      </div>
-      <div class="col-sm-4 text-right">
-        <%= link_to "Continue", deals_overview_path, class: "btn btn-default", id: "continue-btn" %>
-      </div>
-    </div>
-  </header>
-  <section class="scrollable wrapper w-f">
-    <div class="panel-body">
-      <div class="add-page">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <%= form_for(@deal, html: { id: "address_form" }, remote: true ) do |f| %>
-            <% if @deal.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
-                <ul>
-                <% @deal.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-                </ul>
-              </div>
+      <div class="col-sm-6">
+        <%= form_for(@deal, html: { id: "address_form" }, remote: true ) do |f| %>
+        <% if @deal.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+            <ul>
+            <% @deal.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
             <% end %>
-            <h1>Property Address</h1>
-            <div class="form-group">
-              <%= f.label :property_address %>
-              <%= f.text_field :property_address, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= f.label :city %>
-              <%= f.text_field :city, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= f.label :state %>
-              <%= f.text_field :state, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= f.label :zipcode, "Square footage" %>
-              <%= f.text_field :zipcode, class: "form-control" %>
-            </div>
-            <div class="actions">
-              <%= f.submit "Save", class: "btn btn-success", style: "display:none" %>
-            </div>
-             <% end %>
+            </ul>
           </div>
-        </div>
-     
+        <% end %>        
+        <h3>Property Address</h3>
+          <p class="text-muted m-b-lg">
+            Enter the property's address.
+          </p>
+        
+          <div class="form-group">
+            <%= f.label :property_address, "Address" %>
+            <%= f.text_field :property_address, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :city %>
+            <%= f.text_field :city, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :state, "State" %>
+            <div class="btn-group m-r">
+              <button data-toggle="dropdown" class="btn btn-lg btn-default dropdown-toggle no-text-shadow">
+                <span class="dropdown-label" data-placeholder="Please select"><%= state_select %></span> 
+                <span class="caret" style="margin-left:30px;"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-select max-height-400">
+                <%= render 'state_dropdown', :f => f %>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :zipcode, "Zipcode" %>
+            <%= f.text_field :zipcode, class: "form-control" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Save", class: "btn btn-success", style: "display:none" %>
+          </div>
+          
+       
+         <% end %>
+      </div>
     </div>
   </div>
-</section>
+</div>
+
+
 <script>
   $(document).ready(function() {
 
@@ -69,7 +62,7 @@
 
       $('#address_form').submit(); 
       $('#feedback').show();     
-      $('#feedback').text("saved").fadeOut('slow');
+      $('#feedback').text("Saved").fadeOut('slow');
 
     });
 

@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery.cookie
 //= require bootstrap
@@ -21,6 +20,8 @@
 //= require jquery.slimscroll.min
 //= require js-routes
 //= require deals.js
+//= require touchship
+//= require app.plugin
 //= require_self
 //= require turbolinks
 

@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, except: [:index, :new, :create]
+  layout :deal_layout
 
   # GET /deals
   # GET /deals.json
@@ -10,6 +11,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @contacts = @deal.contacts.all
   end
 
   # GET /deals/new
@@ -33,6 +35,7 @@ class DealsController < ApplicationController
   def photos
     @deal.image_galleries.build
   end
+
 
 
   # POST /deals
@@ -75,11 +78,21 @@ class DealsController < ApplicationController
     end
   end
 
+  def deal_layout
+    if params[:action] == "new" || params[:action] == "index"
+      "application"
+    else
+      "deals"
+    end      
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deal
       @deal = Deal.find(params[:id])
     end
+
+  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params

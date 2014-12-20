@@ -1,11 +1,17 @@
 Pipeline::Application.routes.draw do
   
-  resources :deals
+  resources :deals do
+    member do 
+      get '/address',  to: 'deals#address'
+      get '/property', to: 'deals#property_information'
+      get '/overview', to: 'deals#overview'
+      get '/photos',   to: 'deals#photos'
+    end
+    resources :contacts
+  end
 
-  get '/deals/:id/property', to: 'deals#property_information', as: :deals_property
-  get '/deals/:id/address', to: 'deals#address', as: :deals_address
-  get '/deals/:id/overview', to: 'deals#overview', as: :deals_overview
-  get '/deals/:id/photos', to: 'deals#photos', as: :deals_photos
+  
+  
 
 
 

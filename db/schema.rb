@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414224241) do
+ActiveRecord::Schema.define(version: 20141218224806) do
 
   create_table "contacts", force: true do |t|
     t.string   "full_name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140414224241) do
     t.string   "property_type"
     t.string   "deal_title"
     t.string   "deal_summary"
+    t.boolean  "publish",          default: false
   end
 
   create_table "image_galleries", force: true do |t|

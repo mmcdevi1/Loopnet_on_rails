@@ -1,83 +1,89 @@
-<section>
-  <section class="vbox"> 
-    <%= form_for(@deal) do |f| %>
-      <header class="header bg-white b-b clearfix p-md box-shadow">
-        <div class="row">
-          <div class="col-sm-4">
-            
+<div class="panel-body">
+    <div class="add-page">
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@deal, html: { class: "form-horizontal new-deal" }) do |f| %>
+        <% if @deal.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+            <ul>
+            <% @deal.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
           </div>
-          <div class="col-sm-4">
-            
+        <% end %>
+        <h3>Property Information</h3>
+          <p class="text-muted m-b-lg">
+            Enter the property's basic information.
+          </p>
+        <div class="panel">
+          <div class="form-group">
+            <%= f.label :property_name, class: "col-sm-3 control-label" %>              
+            <div class="col-sm-9">
+              <%= f.text_field :property_name, class: "form-control", placeholder: "Your property's name..." %>
+            </div>            
           </div>
-          <div class="col-sm-4 text-right">
-            <%= f.submit "Continue", class: "btn btn-info" %>
+          <div class="form-group">
+            <%= f.label :owner_name, class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+              <%= f.text_field :owner_name, class: "form-control", placeholder: "Owner of the property..." %>
+            </div>
           </div>
-        </div>
-      </header>
-      <section class="scrollable wrapper w-f">
-        <div class="panels">
-        <div class="panel-body">
-          <div class="add-page">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <% if @deal.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
-                    <ul>
-                    <% @deal.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-                <h1>Property Information</h1>
-                <div class="form-group">
-                  <%= f.label :property_name %>
-                  <%= f.text_field :property_name, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :owner_name %>
-                  <%= f.text_field :owner_name, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :floors %>
-                  <%= f.text_field :floors, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :sf, "Square footage" %>
-                  <%= f.text_field :sf, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :year_built %>
-                  <%= f.text_field :year_built, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :percent_leased %>
-                  <%= f.text_field :percent_leased, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :property_class %>
-                  <div class="btn-group m-r">
-                    <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-                      <span class="dropdown-label" data-placeholder="Please select">Select</span> 
-                      <span class="caret" style="margin-left:30px;"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-select">
-                      <li><a href="#"><%= f.radio_button :property_class, "A" %><%= "A" %></a></li>
-                      <li><a href="#"><%= f.radio_button :property_class, "B" %><%= "B" %></a></li>
-                      <li><a href="#"><%= f.radio_button :property_class, "C" %><%= "C" %></a></li>
-                    </ul>
-                  </div>
-                </div>
+          <div class="form-group">
+            <%= f.label :floors, class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+              <%= f.text_field :floors, class: "form-control", placeholder: "Number of floors..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :sf, "Square footage", class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+              <%= f.text_field :sf, class: "form-control", placeholder: "Square footage of property..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :year_built, class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+              <%= f.text_field :year_built, class: "form-control", placeholder: "The year the property was built..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :percent_leased, class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+              <%= f.text_field :percent_leased, class: "form-control", placeholder: "The percent leased..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :property_class, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <div class="btn-group m-r">
+                <button data-toggle="dropdown" class="btn btn-sm btn-link no-text-shadow dropdown-toggle" style="padding:7px 16px;">
+                  <span class="dropdown-label" data-placeholder="Please select" style="margin-top:3px;">
+                    Select Property Class
+                  </span> 
+                  <span class="caret" style="margin-left:30px;"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-select">
+                  <li><a href="#"><%= f.radio_button :property_class, "A" %><%= "A" %></a></li>
+                  <li><a href="#"><%= f.radio_button :property_class, "B" %><%= "B" %></a></li>
+                  <li><a href="#"><%= f.radio_button :property_class, "C" %><%= "C" %></a></li>
+                </ul>
               </div>
-            </div>      
+            </div>
           </div>
-        </div>
+        </div><!-- end panel -->
+        
+        
+        
+        <%= f.submit "Continue", class: "btn btn-info" %>
+        <% end %>
       </div>
-    </section>
-    <% end %>
-  </section>
-</section>
+    </div>      
+  </div>
+</div>
+
+  
 
 
 

@@ -1,84 +1,80 @@
-<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">
-  Basic Information
-</div>
-<ul class="nav nav-main" data-ride="collapse">
-	<li>
-		<%= link_to deals_property_path do %>Property Information
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-home icon"></i>
-		<% end %>
-	</li>
-	<li>
-		<%= link_to deals_address_path do %>
-			Property Address
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-pin icon"></i>
-		<% end %>
-	</li>
-</ul>
-<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">
-  Description
-</div>
-<ul class="nav nav-main" data-ride="collapse">
-	<li>
-		<a href="">Overview
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-libreoffice icon"></i>
-		</a>
-	</li>
-	<li>
-		<a href="">Photos
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-images icon"></i>
-		</a>
-	</li>
-</ul>
-<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">
-  Extras
-</div>
-<ul class="nav nav-main" data-ride="collapse">
-	<li>
-		<a href="">Important Docs
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-file-pdf icon"></i>
-		</a>
-	</li>
-	<li>
-		<a href="">Important Dates
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-calendar icon"></i>
-		</a>
-	</li>
-	<li>
-		<a href="">Contacts
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-users3 icon"></i>
-		</a>
-	</li>
-	<li>
-		<a href="">Amenities
-			<span class="pull-right text-danger"> 
-				<i class="i i-plus icon"></i> 
-			</span>
-			<i class="i i-newtab icon"></i>
-		</a>
-	</li>
-</ul>
-
+<aside class="aside-md bg-offwhite b-r">
+	<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">
+	  Basic Information
+	</div>
+	<ul class="nav nav-main" data-ride="collapse">
+		<li>
+			<%= link_to property_deal_path(@deal) do %>
+				Property Information
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+				
+			<% end %>
+		</li>
+		<li>
+			<%= link_to address_deal_path(@deal) do %>
+				Property Address
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			<% end %>
+		</li>
+	</ul>
+	<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">
+	  Description
+	</div>
+	<ul class="nav nav-main" data-ride="collapse">
+		<li>
+			<%= link_to overview_deal_path(@deal) do %>
+				Overview
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			<% end %>
+		</li>
+		<li>
+			<a href="">Photos
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			</a>
+		</li>
+	</ul>
+	<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">
+	  Extras
+	</div>
+	<ul class="nav nav-main" data-ride="collapse">
+		<li>
+			<a href="">Important Docs
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			</a>
+		</li>
+		<li>
+			<a href="">Important Dates
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			</a>
+		</li>
+		<li>
+			<%= link_to deal_contacts_path(@deal) do %>Contacts
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			<% end %>
+		</li>
+		<li>
+			<a href="">Amenities
+				<span class="pull-right text-danger"> 
+					<i class="i i-plus icon"></i> 
+				</span>
+			</a>
+		</li>
+	</ul>
+</aside>
 
 
 
