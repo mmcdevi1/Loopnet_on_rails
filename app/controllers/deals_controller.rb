@@ -20,8 +20,8 @@ class DealsController < ApplicationController
   end
 
   # GET /deals/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   def address
   end
