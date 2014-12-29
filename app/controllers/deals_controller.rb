@@ -44,7 +44,7 @@ class DealsController < ApplicationController
     @deal = current_user.deals.new(deal_params)
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to deals_address_path(@deal), notice: 'Saved.' }
+        format.html { redirect_to address_deal_path(@deal), notice: 'Saved.' }
         format.json { render action: 'show', status: :created, location: @deal }
       else
         format.html { render action: 'new' }
@@ -79,7 +79,9 @@ class DealsController < ApplicationController
   end
 
   def deal_layout
-    if params[:action] == "new" || params[:action] == "index"
+    if params[:action] == "new"
+      "deals_new"
+    elsif params[:action] == "index" || params[:action] == "show"
       "application"
     else
       "deals"
