@@ -18,23 +18,10 @@ module DealsHelper
     end
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  def property_type(deal)
+    unless deal.property_type.nil?
+      PropertyType.where(id: deal.property_type).first.name.capitalize
+    end
+  end
 
 end

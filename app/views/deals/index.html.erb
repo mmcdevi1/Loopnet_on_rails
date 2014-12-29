@@ -19,8 +19,8 @@
           <% @deals.each do |deal| %>
             <tr>
               <td><%= deal.property_name %></td>
-              <td><%= deal.owner_name %></td>
-              <td><%= deal.property_type %></td>
+              <td><%= deal.owner_name %></td>              
+              <td><%= property_type(deal) %></td>           
               <td><%= deal.state %></td>
               <td><%= deal.city %></td>
               <td><%= deal.zipcode %></td>
@@ -32,11 +32,6 @@
         </tbody>
       </table>
     </section>
-  </aside>
-  <aside class="bg-white lt b-l b-light aside-md hidden-print p-lg">      
-    <a class="btn btn-info btn-block font-bold" data-target="#deals_modal" data-toggle="modal" href="#">
-      Add New Deal
-    </a>
   </aside>
 </section>
 

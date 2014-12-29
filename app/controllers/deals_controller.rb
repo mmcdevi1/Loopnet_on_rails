@@ -17,6 +17,7 @@ class DealsController < ApplicationController
   # GET /deals/new
   def new
     @deal = current_user.deals.new
+    @property_type = PropertyType.all
   end
 
   # GET /deals/1/edit

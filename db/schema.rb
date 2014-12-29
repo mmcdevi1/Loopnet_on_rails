@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218224806) do
+ActiveRecord::Schema.define(version: 20141229222901) do
 
   create_table "contacts", force: true do |t|
     t.string   "full_name"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20141218224806) do
     t.integer  "year_built"
     t.integer  "percent_leased"
     t.string   "property_class"
-    t.string   "property_type"
     t.string   "deal_title"
     t.string   "deal_summary"
     t.boolean  "publish",          default: false
+    t.integer  "property_type"
   end
 
   create_table "image_galleries", force: true do |t|
@@ -65,6 +65,12 @@ ActiveRecord::Schema.define(version: 20141218224806) do
     t.string   "doc_files_content_type"
     t.integer  "doc_files_file_size"
     t.datetime "doc_files_updated_at"
+  end
+
+  create_table "property_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
