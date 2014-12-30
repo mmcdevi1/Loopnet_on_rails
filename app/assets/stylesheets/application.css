@@ -19,10 +19,10 @@
 */
 @font-face{
     font-family:'AvenirLT-Medium';
-    src:url('/assets/avenirlt-medium.eot');
-    src:url('/assets/avenirlt-medium.eot?#iefix') format("embedded-opentype"),
-        url('/assets/avenirlt-medium.woff') format("woff"),
-        url('/assets/avenirlt-medium.ttf') format("truetype")
+    src:asset-url('/assets/avenirlt-medium.eot');
+    src:asset-url('/assets/avenirlt-medium.eot?#iefix') format("embedded-opentype"),
+        asset-url('/assets/avenirlt-medium.woff') format("woff"),
+        asset-url('/assets/avenirlt-medium.ttf') format("truetype")
 }
 @font-face{
     font-family:'AvenirLT-Roman';
@@ -47,10 +47,10 @@
 }
 @font-face{
     font-family:'AvenirLT-Black';
-    src:url('/assets/avenirlt-black.eot');
-    src:url('/assets/avenirlt-black.eot?#iefix') format("embedded-opentype"),
-        url('/assets/avenirlt-black.woff') format("woff"),
-        url('/assets/avenirlt-black.ttf') format("truetype")
+    src:asset-url('/assets/avenirlt-black.eot');
+    src:asset-url('/assets/avenirlt-black.eot?#iefix') format("embedded-opentype"),
+        asset-url('/assets/avenirlt-black.woff') format("woff"),
+        asset-url('/assets/avenirlt-black.ttf') format("truetype")
 }
 .header a {
 	color: #333;
