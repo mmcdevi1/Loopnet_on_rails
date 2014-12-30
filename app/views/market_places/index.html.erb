@@ -25,7 +25,7 @@
       <span class="blue">
         <%= @deals.all.count %>
       </span> 
-      of the best properties for you
+      of the best properties for you test
     </p>
     <% @deals.each do |deal| %>
       <p class="market-time-ago">Added <%= time_ago_in_words(deal.created_at) %> ago</p>
