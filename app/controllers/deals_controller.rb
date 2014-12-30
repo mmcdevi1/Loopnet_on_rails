@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, except: [:index, :new, :create]
+  before_action :authenticate_user!
   layout :deal_layout
 
   # GET /deals
