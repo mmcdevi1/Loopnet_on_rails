@@ -24,4 +24,17 @@ module DealsHelper
     end
   end
 
+  def active_class_wo_class(path)
+    if current_page?(path)
+      'active'
+    end
+  end
+
+  def property_type_active(type)
+    @deal = Deal.find(params[:id])
+    if @deal.property_type == type.id
+      "active"
+    end
+  end
+
 end

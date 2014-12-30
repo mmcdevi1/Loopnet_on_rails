@@ -28,14 +28,13 @@ class DealsController < ApplicationController
   end
 
   def property_information
+    @property_type = PropertyType.all
   end
 
   def overview
   end
 
-  def photos
-    @deal.image_galleries.build
-  end
+
 
 
 
@@ -45,7 +44,7 @@ class DealsController < ApplicationController
     @deal = current_user.deals.new(deal_params)
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to address_deal_path(@deal), notice: 'Saved.' }
+        format.html { redirect_to property_deal_path(@deal), notice: 'Saved.' }
         format.json { render action: 'show', status: :created, location: @deal }
       else
         format.html { render action: 'new' }
@@ -113,8 +112,7 @@ class DealsController < ApplicationController
                                    :property_class,
                                    :property_type,
                                    :deal_title,
-                                   :deal_summary,
-                                   image_galleries_attributes: [:user_id, :deal_id, :id, :deal_images, :_destroy])
+                                   :deal_summary)
     end
 end
 

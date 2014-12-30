@@ -25,6 +25,16 @@
             <%= f.text_field :property_name, class: "form-control" %>
           </div>
           <div class="form-group">
+            <%= f.label :property_type %>
+            <div class="btn-group" data-toggle="buttons"> 
+              <% @property_type.each do |type| %>
+                <label class="btn btn-lg btn-default no-text-shadow <%= property_type_active(type) %>"> 
+                  <%= f.radio_button :property_type, type.id %> <%= type.name %>
+                </label> 
+              <% end %>
+            </div>
+          </div>
+          <div class="form-group">
             <%= f.label :owner_name %>
             <%= f.text_field :owner_name, class: "form-control" %>
           </div>

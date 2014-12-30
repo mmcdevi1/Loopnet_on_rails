@@ -1,4 +1,4 @@
-<%= form_for(@deal, html: { id: "address_form" }, remote: true, multipart: true ) do |f| %>
+<%= form_for [@deal, ImageGallery.new] do |f| %>
   
  <section class="scrollable wrapper w-f">
     <div class="panel-body">
@@ -23,6 +23,9 @@
             <div class="actions">
               <%= f.submit "Save", class: "btn btn-success", style: "" %>
             </div>
+            <% ImageGallery.where(deal_id: @deal).each do |image| %>
+              <%= image_tag(image.deal_images.url(:thumb)) %><br>
+            <% end %>
           </div>
         </div>
       <% end %>
