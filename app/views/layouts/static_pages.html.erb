@@ -11,10 +11,12 @@
         </div>
       <% end %> 
       <section>
-        <section class="hbox stretch">
+        <section class="hbox stretch">    
+          <% if user_signed_in? %>
           <%= render 'layouts/aside' %>
-          <section id="content" style="width:100%;">
-            <section class="hbox stretch" style="padding-left:200px;">
+          <% end %>     
+          <section id="content">
+            <section class="hbox stretch">
               <section>
                 <section class="vbox">
                   <%= yield %>

@@ -34,11 +34,12 @@
 			<% end %>
 		</li>
 		<li>
-			<a href="">Photos
+			<%= link_to deal_photos_path(@deal) do %>
+				Photos
 				<span class="pull-right text-danger"> 
 					<i class="i i-plus icon"></i> 
 				</span>
-			</a>
+			<% end %>
 		</li>
 	</ul>
 	<div class="text-muted-extra text-sm hidden-nav-xs padder m-t-sm text-u-c font-bold">

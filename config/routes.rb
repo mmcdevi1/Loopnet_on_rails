@@ -39,10 +39,10 @@ Pipeline::Application.routes.draw do
     
     get  '/password/new', to: 'devise/passwords#new', as: :new_user_password
     post '/password/new', to: 'devise/passwords#create', as: :user_password
-  end
-
-  root to: "static_pages#home"
+  end  
 
   get '/market', to: 'market_places#index', as: :market
+
+  root to: "static_pages#home"
   
 end

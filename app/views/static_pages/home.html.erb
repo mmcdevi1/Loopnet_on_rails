@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <h3>Welcome back <%= full_name %></h3>
+<% else %>
+<div class="container">
+  <h1>Welcome to Pipeline</h1>
+  <h3>Please Sign In</h3>
+</div>
+<% end %>

@@ -1,4 +1,4 @@
-<header class="bg-dark header header-md navbar navbar-fixed-top-xs box-shadow">
+<header class="bg-dark header header-md navbar navbar-fixed-top box-shadow">
   <div class="navbar-header aside-md dk">
     <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
       <i class="fa fa-bars"></i>
@@ -13,6 +13,7 @@
     </a>
   </div>
   <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+  <% if user_signed_in? %>
     <li class="hidden-xs">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
         <i class="i i-mail"></i> 
@@ -52,12 +53,10 @@
           </div> 
         </section> 
       </section> 
-    </li>
+    </li>   
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-        <% if user_signed_in? %>
-          <%= full_name %>
-        <% end %>
+        <%= full_name %>   
         <b class="caret"></b> 
       </a>
       <ul class="dropdown-menu animated fadeInRight">
@@ -66,7 +65,10 @@
         <li><%= link_to logout_path do %><i class="i i-logout"></i> Logout<% end %></li>
       </ul>
     </li>
-
+    <% else %>
+    <li><%= link_to "Login", new_user_session_path %></li>
+    <li><%= link_to "Register", register_path %></li>
+    <% end %>
    
   </ul>      
 </header>
