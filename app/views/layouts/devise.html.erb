@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="white-bg">
 	<%= render 'layouts/head' %>
-	<body class="devise brandon">
+	<body class="devise">
 		<div id="wrapper">
 			<% flash.each do |type, message| %>
 				<div class="alert <%= flash_class type %>" id="alert-fadeout">
@@ -13,7 +13,7 @@
 				<div id="content_container">
 					<div id="content">
 						<%= link_to root_path do %>
-							<h3 class="corner-store center">Pipeline</h3>
+							<h3 class="center">Pipeline</h3>
 						<% end %> 
 						<%= yield %>
 					</div>

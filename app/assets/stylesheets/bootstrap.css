@@ -3919,7 +3919,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav > li > .dropdown-menu {
-  margin: -10px 14px 0 0;
+  margin: 0;
   /*border-top-left-radius: 0;
   border-top-right-radius: 0;*/
 }

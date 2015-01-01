@@ -1,40 +1,45 @@
-<aside class="bg-white aside hidden-print b-r" style="position:fixed;">          
-  <section class="vbox">
-     <section class="w-f scrollable">
-      <div class=slim-scroll data-height=auto data-disable-fade-out=true data-distance=0 data-size=10px data-railOpacity=0.2>
-        <!-- nav -->                 
-        <nav class="nav-primary hidden-xs" style="padding:20px;">
-          <%= link_to "Add New Deal", new_deal_path, class: "btn btn-danger btn-block btn-shadow" %>
-          <div class="hidden-nav-xs m-t-lg m-b-sm nav-sm-title">Menu</div>
-          <ul class="nav nav-main" data-ride="collapse">
-            <li>
-              <%= link_to root_path, class: "auto" do %>
-                <span class="">Dashboard</span>
-              <% end %>
-            </li>
-            <li>
-             <%= link_to market_path, class: "auto" do %>
-                <span class="">Market</span>                              
-              <% end %>
-            <li>
-              <%= link_to deals_path, class: "auto" do %>
-                <span class="">My Pipeline</span>
-              <% end %>
-            </li>
-            <li>
-              <a href="" class="auto">
-                <span class="">Calendar</span>
-              </a>
-            </li>
-            <li>
-              <a href="" class="auto">
-                <span class="">Contacts</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- / nav -->
+<!-- aside -->
+<aside id="aside" class="app-aside hidden-xs bg-white b-r" style="position:fixed; height:100%;">
+  <div class="aside-wrap">
+    <div class="navi-wrap">
+      <!-- nav -->
+          <nav ui-nav class="navi clearfix" style="padding:20px">
+            <a class="btn btn-danger btn-block btn-shadow" href="/deals/new">Add New Deal</a>
+            <ul class="nav">
+              <li class="hidden-folded m-t-lg m-b-sm text-xs nav-sm-title">
+                <span>Menu</span>
+              </li>
+              <li>
+                <%= link_to root_path, class: "auto" do %>
+                  <span class="">Dashboard</span>
+                <% end %>           
+              </li>
+              <li>
+               <%= link_to market_path, class: "auto" do %>
+                  <span class="">Market</span>                              
+                <% end %>           
+              </li>
+              <li>
+                <%= link_to deals_path, class: "auto" do %>
+                  <span class="">My Pipeline</span>
+                <% end %>          
+              </li>
+              <li>
+                <a href="" class="auto">
+                  <span class="">Calendar</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="auto">
+                  <span class="">Contacts</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- nav -->
+
+        
+        </div>
       </div>
-    </section>
-  </section>
-</aside>
+  </aside>
+  <!-- / aside -->

@@ -1,109 +1,121 @@
-<header class="bg-dark header header-md navbar navbar-fixed-top box-shadow">
-  <div class="navbar-header aside-md dk">
-    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-      <i class="fa fa-cog"></i>
-    </a>
-  </div>   
-  <div class="nav navbar-nav">   
-    <a href="index.html" class="navbar-brand"> 
-      <%= image_tag('logo.png') %>
-    </a>
-  </div>
-  <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
-  <% if user_signed_in? %>
-    <li class="hidden-xs">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-        <i class="i i-mail"></i> 
-        <span class="badge badge-sm up bg-danger count" style="display: inline-block;">30</span> 
-      </a> 
-    </li>
-    <li class="hidden-xs"> 
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-        <i class="i i-chat3"></i> 
-        <span class="badge badge-sm up bg-danger count" style="display: inline-block;">3</span> 
-      </a> 
-      <section class="dropdown-menu aside-xl animated flipInY"> 
-        <section class="panel bg-white"> 
-          <div class="panel-heading b-light bg-light"> 
-            <strong>You have <span class="count" style="display: inline;">3</span> notifications</strong> 
-          </div> 
-          <div class="list-group list-group-alt">
-            <a href="#" class="media list-group-item" style="display: block;">
-              <span class="pull-left thumb-sm text-center">
-                <i class="fa fa-envelope-o fa-2x text-success"></i>
+<!-- header -->
+  <header id="header" class="app-header navbar" role="menu">
+          <!-- navbar header -->
+      <div class="navbar-header bg-dark">
+        <button class="pull-right visible-xs dk" ui-toggle="show" target=".navbar-collapse">
+          <i class="glyphicon glyphicon-cog"></i>
+        </button>
+        <button class="pull-right visible-xs" ui-toggle="off-screen" target=".app-aside" ui-scroll="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <!-- brand -->
+        <a href="#/" class="navbar-brand text-lt">
+          pipeline
+        </a>
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow bg-dark">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          
+        </div>
+        <!-- / buttons -->
+
+       
+
+       
+       
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              <i class="icon-bell fa-fw"></i>
+              <span class="visible-xs-inline">Notifications</span>
+              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+              <div class="panel bg-white">
+                <div class="panel-heading b-light bg-light">
+                  <strong>You have <span>2</span> notifications</strong>
+                </div>
+                <div class="list-group">
+                  <a href class="media list-group-item">
+                    <span class="pull-left thumb-sm">
+                      <img src="img/a0.jpg" alt="..." class="img-circle">
+                    </span>
+                    <span class="media-body block m-b-none">
+                      Use awesome animate.css<br>
+                      <small class="text-muted">10 minutes ago</small>
+                    </span>
+                  </a>
+                  <a href class="media list-group-item">
+                    <span class="media-body block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                  </a>
+                </div>
+                <div class="panel-footer text-sm">
+                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                </div>
+              </div>
+            </div>
+            <!-- / dropdown -->
+          </li>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <%= image_tag('a0.jpg') %>
+                <i class="on md b-white bottom"></i>
               </span>
-              <span class="media-body block m-b-none">Sophi sent you a email<br><small class="text-muted">1 minutes ago</small></span>
-            </a> 
-            <a href="#" class="media list-group-item"> 
-              <span class="pull-left thumb-sm"> 
-                <img src="images/a0.png" alt="..." class="img-circle"> 
-              </span> 
-              <span class="media-body block m-b-none"> Use awesome animate.css<br> <small class="text-muted">10 minutes ago</small> </span> 
-            </a> 
-            <a href="#" class="media list-group-item"> 
-              <span class="media-body block m-b-none"> 1.0 initial released<br> <small class="text-muted">1 hour ago</small> </span> 
-            </a> 
-          </div> 
-          <div class="panel-footer text-sm"> 
-            <a href="#" class="pull-right"><i class="fa fa-cog"></i></a> 
-            <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a> 
-          </div> 
-        </section> 
-      </section> 
-    </li>   
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-        <%= full_name %>   
-        <b class="caret"></b> 
-      </a>
-      <ul class="dropdown-menu animated fadeInRight">
-        <li><%= link_to "Settings", edit_path %></li>
-        <li class="divider"></li>                
-        <li><%= link_to logout_path do %><i class="i i-logout"></i> Logout<% end %></li>
-      </ul>
-    </li>
-    <% else %>
-    <li><%= link_to "Login", new_user_session_path %></li>
-    <li><%= link_to "Register", register_path %></li>
-    <% end %>
-   
-  </ul>      
-</header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <span class="hidden-sm hidden-md"><%= full_name %></span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                <div>
+                  <p>300mb of 500mb used</p>
+                </div>
+                <div class="progress progress-xs m-b-none dker">
+                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                </div>
+              </li>
+              <li>
+                <a href>
+                  <span class="badge bg-danger pull-right">30%</span>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a ui-sref="app.page.profile">Profile</a>
+              </li>
+              <li>
+                <a ui-sref="app.docs">
+                  <span class="label bg-info pull-right">new</span>
+                  Help
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a ui-sref="access.signin">Logout</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+          <% else %>
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to "Register", register_path %></li>
+          <% end %>
+        </ul>
+        <!-- / navbar right -->
+       
+      </div>
+      <!-- / navbar collapse -->
+  </header>
+  <!-- / header -->

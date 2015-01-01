@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="app-fluid">
+<html>
   <%= render 'layouts/head' %>
   <body>
-    <section class="vbox">
+     <div class="app app-header-fixed  ">
       <%= render 'layouts/header' %>
       <% flash.each do |type, message| %>
         <div class="alert <%= flash_class type %>" id="alert-fadeout">
@@ -10,23 +10,13 @@
           <%= message %>
         </div>
       <% end %> 
-      <section>
-        <section class="hbox stretch">    
-          <% if user_signed_in? %>
-          <%= render 'layouts/aside' %>
-          <% end %>     
-          <section id="content">
-            <section class="hbox stretch">
-              <section>
-                <section class="vbox">
-                  <%= yield %>
-                </section><!-- end vbox -->    
-              </section><!-- end section -->     
-            </section><!-- end hbox stretch -->
-          </section><!-- end id content -->  
-        </section><!-- end hbox stretch -->   
-      </section><!-- end section -->   
-    </section><!-- end vbox --> 
+      <% if user_signed_in? %>
+      <%= render 'layouts/aside' %>
+      <% end %>
+      <div id="content" class="app-content" role="main">
+        <%= yield %>
+      </div>
+    </div>
     <%= render 'layouts/footer' %>  
   </body>
 </html>

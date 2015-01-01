@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="app-fluid">
+<html>
   <%= render 'layouts/head' %>
   <body>
-    <section class="vbox">
+    <div class="app app-header-fixed  ">
       <%= render 'layouts/header' %>
       <% flash.each do |type, message| %>
         <div class="alert <%= flash_class type %>" id="alert-fadeout">
@@ -10,33 +10,27 @@
           <%= message %>
         </div>
       <% end %> 
-      <section>
-        <section class="hbox stretch">
-          <%= render 'layouts/aside' %>
-          <section id="content" style="width:100%;">
-            <section class="hbox stretch" style="padding-left:200px;">
-              <section>
-                <section class="vbox">
-                  <header class="header bg-white b-b clearfix box-shadow">
-                    <button href="#" class="btn btn-sm btn-info btn-shadow pull-right">Publish</button>
-                    <p><%= @deal.property_name %> > Property Information</p>
-                  </header>
-                  <section>
-                    <section class="hbox stretch">                      
-                      <%= render 'layouts/aside/brokerform_aside' %>
-                      <section class="scrollable wrapper w-f">
-                        <%= yield %>
-                      </section>
-                    </section><!-- end hbox stretch -->
-                  </section><!-- end section -->   
-                </section><!-- end vbox -->    
-              </section><!-- end section -->     
-            </section><!-- end hbox stretch -->
-          </section><!-- end id content -->  
-        </section><!-- end hbox stretch -->   
-      </section><!-- end section -->   
-    </section><!-- end vbox --> 
+      <%= render 'layouts/aside' %>
+      <div id="content" class="app-content" role="main">
+        <div class="wrapper bg-white b-b box-shadow fixedheader" id="fixedheader2">        
+          <div class="btn-toolbar">     
+            <button href="#" class="btn btn-sm btn-info btn-shadow pull-right">Publish</button>
+          </div>
+        </div>
+        <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MailCtrl" style="padding-top:61px">
+          <div class="col w-md bg-offwhite b-r bg-auto">
+            <%= render 'layouts/aside/brokerform_aside' %>
+          </div>
+          <div class="col wrapper">
+            <%= yield %>
+          </div>
+        </div>         
+      </div>
+    </div>
+
+    
     <%= render 'layouts/footer' %>  
   </body>
 </html>
+
 
