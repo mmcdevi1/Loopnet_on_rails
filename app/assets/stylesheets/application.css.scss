@@ -446,9 +446,33 @@ margin: 0 0 5px;
 .text-muted-extra {
 color: #dbdbdb;
 }
-
-
-
+.btn-square {
+  width: 150px;
+  height: 148px; 
+  margin-right:16px;
+  margin-bottom:0px; 
+  float: left;
+  padding-top:44px;
+}
+.preview-img-border {
+border-radius:3px;
+border:1px solid #ddd;
+padding:4px;
+margin-right:16px;
+height: 150px;
+width: 150px;
+margin-bottom:16px;
+}
+#chat {
+  height: 300px;
+  width: 300px;
+  background: white;
+  border:1px solid #d4d9df;
+  position: fixed;
+  bottom:0;
+  right:260px;
+  padding:10px;
+}
 
 
 

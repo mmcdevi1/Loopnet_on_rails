@@ -19,9 +19,13 @@ class ImageGalleriesController < ApplicationController
   def update
   end
 
+  def destroy
+
+  end
+
   private
   def image_galleries_params
-    params.require(:image_gallery).permit(:deal_id, :deal_images)    
+    params.require(:image_gallery).permit(:deal_id, :deal_images, :_destroy)    
   end
 
   def deal_layout

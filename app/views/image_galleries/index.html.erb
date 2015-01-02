@@ -1,37 +1,49 @@
 <%= form_for [@deal, ImageGallery.new] do |f| %>
-  
- <section class="scrollable wrapper w-f">
-    <div class="panel-body">
-      <div class="add-page">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <% if @deal.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
-                <ul>
-                <% @deal.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-                </ul>
-              </div>
-            <% end %>
-            <h1>Upload Photos</h1>
-            
-            <%= f.file_field :deal_images %>
-            </div><!-- end parent -->
-           
-            <div class="actions">
-              <%= f.submit "Save", class: "btn btn-success", style: "" %>
+  <div class="panel-body">
+    <div class="add-page">
+      <div class="row">
+        <div class="col-md-12">
+          <% if @deal.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+              <ul>
+              <% @deal.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
             </div>
+          <% end %>
+          <h3>Upload Photos</h3>
+          <p class="text-muted m-b-lg">
+            You can upload as many photos as you want.
+          </p>
+          <%= f.file_field :deal_images, as: :file, class: "filestyle", id: "lefile", style: "position:fixed; left:-500px;" %>
+          <div class="bootstrap-filestyle" style="display: inline;">
+            <label for="lefile" class="btn btn-default btn-square no-text-shadow">
+              <i class="i i-images"></i><br>
+              <span>Upload Image</span>
+            </label>
+          </div>
+          <div class="row">
+            
             <% ImageGallery.where(deal_id: @deal).each do |image| %>
-              <%= image_tag(image.deal_images.url(:thumb)) %><br>
+              
+                <%= image_tag(image.deal_images.url(:thumb), class: "img-thumbnail") %>                 
+             
             <% end %>
+            <div class="upload-preview-options">
+              <%= image_tag("blank.gif", id: "pageimage") %>
+            </div>
           </div>
         </div>
-      <% end %>
-    </div>
+        <div class="actions">
+          <%= f.submit "Save", class: "btn btn-success", style: "" %>
+        </div>
+      </div>
+    </div>    
   </div>
-</section>
+<% end %>
+
 <script>
   $(document).ready(function() {
 

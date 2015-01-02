@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :contacts
-	has_many :image_galleries
-	has_many :important_docs
+	has_many :image_galleries, :dependent => :destroy
+	has_many :important_docs, :dependent => :destroy
 	has_many :deals
 end
