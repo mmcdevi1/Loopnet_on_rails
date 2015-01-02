@@ -17,6 +17,9 @@
 //= require bootstrap
 //= require bootstrap-wysihtml5
 //= require app
+//= require chat
+//= require users
+//= require private_pub
 //= require jquery.slimscroll.min
 //= require js-routes
 //= require deals.js

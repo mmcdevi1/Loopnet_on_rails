@@ -32,6 +32,8 @@ gem 'turbolinks'
 gem 'state_machine'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'private_pub'
+gem 'thin'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

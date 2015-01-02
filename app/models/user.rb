@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
 	has_many :image_galleries, :dependent => :destroy
 	has_many :important_docs, :dependent => :destroy
 	has_many :deals
+  has_many :conversations, :foreign_key => :sender_id
 end

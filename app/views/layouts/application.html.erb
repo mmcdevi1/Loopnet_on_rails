@@ -40,9 +40,13 @@
                 <i class="on b-white bottom"></i>
               </a>
               <div class="clear">
-                <div><a href="">Chris Fox</a></div>
+                <div>
+                  <%= link_to User.find(2).firstname + User.find(2).lastname, "#", class: "start-conversation",
+                    "data-sid" => current_user.id, "data-rip" => User.find(2).id %>
+                </div>
                 <small class="text-muted">Designer, Blogger</small>
               </div>
+
             </li>
             <li class="list-group-item">
               <a herf="" class="pull-left thumb-sm avatar m-r">
@@ -50,7 +54,8 @@
                 <i class="on b-white bottom"></i>
               </a>
               <div class="clear">
-                <div><a href="">Mogen Polish</a></div>
+                <div><%= link_to User.find(1).firstname + User.find(1).lastname, "#", class: "start-conversation",
+                    "data-sid" => current_user.id, "data-rip" => User.find(1).id %></div>
                 <small class="text-muted">Writter, Mag Editor</small>
               </div>
             </li>
@@ -214,11 +219,7 @@
   </div>
       </div>
     </div>
-    <div id="chat">
-      <p>Chat with John LaValley</p>
-      <div>John: Hey man!</div>
-      <div>You: Whats up!</div>
-    </div>  
+ 
     <%= render 'layouts/footer' %>
 
   </body>

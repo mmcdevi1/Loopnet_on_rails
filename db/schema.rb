@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229222901) do
+ActiveRecord::Schema.define(version: 20150102013325) do
+
+  create_table "chats", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "recipient_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chats", ["recipient_id"], name: "index_chats_on_recipient_id"
+  add_index "chats", ["user_id"], name: "index_chats_on_user_id"
 
   create_table "contacts", force: true do |t|
     t.string   "full_name"
@@ -23,6 +34,16 @@ ActiveRecord::Schema.define(version: 20141229222901) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "conversations", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
 
   create_table "deals", force: true do |t|
     t.string   "property_name"
@@ -66,6 +87,16 @@ ActiveRecord::Schema.define(version: 20141229222901) do
     t.integer  "doc_files_file_size"
     t.datetime "doc_files_updated_at"
   end
+
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "conversation_id"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "property_types", force: true do |t|
     t.string   "name"
