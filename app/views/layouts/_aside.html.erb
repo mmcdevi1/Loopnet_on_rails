@@ -4,33 +4,44 @@
     <div class="navi-wrap">
       <!-- nav -->
           <nav ui-nav class="navi clearfix" style="padding:20px">
-            <a class="btn btn-danger btn-block btn-shadow" href="/deals/new">Add New Deal</a>
             <ul class="nav">
               <li class="hidden-folded m-t-lg m-b-sm text-xs nav-sm-title">
                 <span>Menu</span>
               </li>
               <li>
-                <%= link_to root_path, class: "auto" do %>
+                <%= link_to root_path, class: "auto", data: { toggle: "tooltip", placement: "right" }, title: "Dashboard" do %>
+                  <i class="i i-statistics text-info-lter"></i>
                   <span class="">Dashboard</span>
                 <% end %>           
               </li>
               <li>
-               <%= link_to market_path, class: "auto" do %>
+                <a href="" class="auto" data-toggle="tooltip" data-placement="right" title="Inbox">
+                  <i class="i i-mail2 text-info-lter"></i>
+                  <span class="">Inbox</span>
+                </a>
+              </li>
+              <li>
+               <%= link_to market_path, class: "auto", data: { toggle: "tooltip", placement: "right" }, title: "Market" do %>
+                  <b class="badge bg-info pull-right"><%= Deal.count %></b>
+                  <i class="i i-chart text-info-lter"></i>
                   <span class="">Market</span>                              
                 <% end %>           
               </li>
               <li>
-                <%= link_to deals_path, class: "auto" do %>
+                <%= link_to deals_path, class: "auto", data: { toggle: "tooltip", placement: "right" }, title: "My Pipeline" do %>
+                  <i class="i i-paperplane text-info-lter"></i>
                   <span class="">My Pipeline</span>
                 <% end %>          
               </li>
               <li>
                 <a href="" class="auto">
+                  <i class="i i-calendar text-info-lter"></i>
                   <span class="">Calendar</span>
                 </a>
               </li>
               <li>
                 <a href="" class="auto">
+                  <i class="i i-bubble text-info-lter"></i>
                   <span class="">Contacts</span>
                 </a>
               </li>

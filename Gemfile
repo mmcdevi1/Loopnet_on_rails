@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 ruby '2.1.2'
 
-
+#rackup private_pub.ru -s thin -E production
 gem 'bootstrap-wysihtml5-rails'
 gem 'js-routes'
 gem 'mailboxer'

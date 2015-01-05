@@ -3,6 +3,7 @@ class Deal < ActiveRecord::Base
 	has_many :contacts, :dependent => :destroy
 	has_many :image_galleries, :dependent => :destroy
 	has_many :important_docs, :dependent => :destroy
+  has_many :important_dates, :dependent => :destroy
 	belongs_to :user
 
 	validates :property_name, presence: true

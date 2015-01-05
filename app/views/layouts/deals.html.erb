@@ -2,7 +2,7 @@
 <html>
   <%= render 'layouts/head' %>
   <body>
-    <div class="app app-header-fixed  ">
+    
       <%= render 'layouts/header' %>
       <% flash.each do |type, message| %>
         <div class="alert <%= flash_class type %>" id="alert-fadeout">
@@ -12,16 +12,21 @@
       <% end %> 
       <%= render 'layouts/aside' %>
       <div id="content" class="app-content" role="main">
-        <div class="wrapper bg-white b-b box-shadow fixedheader" id="fixedheader2">        
+        <div class="wrapper bg-white b-b box-shadow fixedheader" id="fixedheader2">   
+          <div class="pull-left">
+            <span class="bold text-muted deals-breadcrumb">
+              Deals / <%= @deal.property_name %>
+            </span>
+          </div>   
           <div class="btn-toolbar">     
             <button href="#" class="btn btn-sm btn-info btn-shadow pull-right">Publish</button>
           </div>
         </div>
         <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MailCtrl" style="padding-top:61px">
-          <div class="col w-md bg-offwhite b-r bg-auto">
+          <div class="col w-md bg-white b-r bg-auto">
             <%= render 'layouts/aside/brokerform_aside' %>
           </div>
-          <div class="col wrapper">
+          <div class="col">
             <%= yield %>
           </div>
         </div>         

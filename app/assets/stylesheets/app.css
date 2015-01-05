@@ -240,7 +240,10 @@ a:hover .caret-white {
 
 .list-group-item {
   padding-right: 15px;
-  border-color: #e7ecee;
+  border-color: #c4c4c4;
+}
+.list-group-item:hover {
+  border-color: #aaa;
 }
 
 a.list-group-item:hover,
@@ -483,8 +486,8 @@ a.list-group-item.hover {
 
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px 15px;
-  border-top: 1px solid #eaeff0;
+  padding: 13px 15px 11px;
+  border-top: 1px solid #e0e0e0;
 }
 
 .table > thead > tr > th {
@@ -633,7 +636,7 @@ pre {
 }
 
 .modal-backdrop {
-  background-color: #3a3f51;
+  background-color: #fff;
 }
 
 .modal-backdrop.in {
@@ -1212,7 +1215,7 @@ html {
 .navi ul.nav li a {
   position: relative;
   display: block;
-  padding: 0px;
+  padding: 3px 0px;
   font-weight: normal;
   text-transform: none;
   -webkit-transition: background-color 0.2s ease-in-out 0s;
@@ -1221,7 +1224,7 @@ html {
 
 .navi ul.nav li a .badge,
 .navi ul.nav li a .label {
-  padding: 2px 5px;
+  padding: 3px 5px 0px;
   margin-top: 2px;
   font-size: 11px;
 }

@@ -24,6 +24,7 @@
 //= require js-routes
 //= require deals.js
 //= require touchship
+//= require bootstrap-datepicker
 //= require app.plugin
 //= require_self
 //= require turbolinks

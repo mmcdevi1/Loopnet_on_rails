@@ -1,7 +1,8 @@
+<div class="app app-header-fixed app-aside-folded">
 <!-- header -->
   <header id="header" class="app-header navbar" role="menu">
-          <!-- navbar header -->
-      <div class="navbar-header bg-dark">
+    <!-- navbar header -->
+      <div class="navbar-header bg-info lter">
         <button class="pull-right visible-xs dk" ui-toggle="show" target=".navbar-collapse">
           <i class="glyphicon glyphicon-cog"></i>
         </button>
@@ -10,17 +11,18 @@
         </button>
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <%= image_tag("logo.png") %>
+          <i class="i i-chat2" style="position:relative; top:3px;"></i>
         </a>
         <!-- / brand -->
       </div>
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-dark">
+      <div class="collapse pos-rlt navbar-collapse bg-white b-b box-shadow">
         <!-- buttons -->
         <div class="nav navbar-nav hidden-xs">
-          
+          <a class="btn btn-danger btn-sm navbar-btn btn-shadow" href="/deals/new" style="width:150px;">Add New Deal</a>
+
         </div>
         <!-- / buttons -->
 

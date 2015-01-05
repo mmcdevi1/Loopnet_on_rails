@@ -9,6 +9,8 @@ Pipeline::Application.routes.draw do
     resources :contacts
     get '/photos', to: 'image_galleries#index'
     resources :image_galleries
+    resources :important_docs
+    resources :important_dates
   end
 
   

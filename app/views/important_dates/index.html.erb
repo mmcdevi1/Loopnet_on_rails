@@ -1,0 +1,127 @@
+<div id="feedback"></div>
+<div class="b-b bg-white p-xl">
+  <div class="row">
+    <div class="col-sm-12">
+      <%= form_for [@deal, ImportantDate.new], html: { class: "form-inline" } do |f| %>
+        <h3 style="margin-top:0;">
+          Important Dates
+        </h3>
+        <p class="text-muted m-b-lg">
+          Add all important dates related to this deal.
+        </p>
+        <div class="line b-b b-light line-lg"></div>
+        <div class="form-group">
+          <%= f.text_field :title, class: "form-control input-sm", placeholder: "Title" %>
+        </div>   
+        <div class="form-group">
+          <%= f.text_field :date, class: "datepicker-input form-control input-sm", placeholder: "Date" %>
+        </div>
+        <%= f.submit "Add", class: "btn btn-danger btn-shadow" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="p-xl">
+  <% if @deal.important_dates.any? %>
+    <div class="row text-center">
+      <div class="col-lg-3">
+        <div class="panel padder-v item">
+          <div class="h1 font-thin h1"><%= @dates.count %></div>
+          <span class="text-muted text-xs">Important Dates for</span><br>
+          <span class="text-muted text-xs bold uppercase"><%= @deal.property_name %></span>
+        </div>
+      </div>
+    </div>
+    <h4 class="text-muted">Uploaded Dates</h4>
+    <div class="div-table box-shadow">
+      <div class="div-table-head bold box-shadow">
+        <div class="row">
+          <div class="col-sm-3">
+            Project
+          </div>
+          <div class="col-sm-3">
+            Date
+          </div>
+          <div class="col-sm-3">
+            Uploaded
+          </div>
+          <div class="col-sm-3 text-right">
+            Action
+          </div>
+        </div>
+      </div>
+      <div class="div-table-body">
+        <% @dates.each do |date| %> 
+          <div class="row">             
+            <div class="col-sm-3 bold">
+              <%= date.title %>
+            </div>
+            <div class="col-sm-3">
+              <%= date.date %>
+            </div>
+            <div class="col-sm-3">
+              <%= time_ago_in_words(date.updated_at) %> ago
+            </div>
+            <div class="col-sm-3">
+              <span class="pull-right">
+                <a href=""><i class="fa fa-fw m-r-xs fa-pencil text-info"></i></a>
+                <a href="" data-toggle="modal" data-target="#date<%= date.id %>">
+                  <i class="i i-trashcan text-danger"></i>
+                </a>
+              </span>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="date<%= date.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                  </div>
+                  <div class="modal-body">
+                    Once the page is deleted, it's gone forever!
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                    <%= link_to "Delete", [@deal, date], method: :delete, class: "btn btn-danger btn-shadow" %>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end modal -->
+          </div><!-- end row -->
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+  <p>No dates added!</p>
+  <% end %>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
