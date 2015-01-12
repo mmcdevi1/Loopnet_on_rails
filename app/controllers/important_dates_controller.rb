@@ -1,5 +1,6 @@
 class ImportantDatesController < ApplicationController
   layout :deal_layout
+  before_action :authenticate_user!
 
   def index
     @deal = Deal.find(params[:deal_id])

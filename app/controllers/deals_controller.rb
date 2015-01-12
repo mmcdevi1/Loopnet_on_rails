@@ -13,6 +13,7 @@ class DealsController < ApplicationController
   # GET /deals/1.json
   def show
     @contacts = @deal.contacts.all
+    @image = @deal.image_galleries.first
   end
 
   # GET /deals/new

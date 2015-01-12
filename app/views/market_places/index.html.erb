@@ -1,14 +1,12 @@
-<header class="header bg-white b-b clearfix p-md fixedheader" id="fixedheader" style="position:fixed;  z-index:1000;">
+<header class="header bg-white b-b clearfix p-md fixedheader box-shadow" id="fixedheader" style="position:fixed;  z-index:1000;">
   <div class="row">
     <div class="col-sm-4">
-      <div class="btn-group"> 
-        <button type="button" class="btn btn-sm btn-default no-text-shadow">
-          <i class="i i-list2"></i>
+      
+        <button type="button" class="btn btn-sm btn-default no-text-shadow" id="filter_btn">
+          <i class="i i-list2"></i> Expand Filters
         </button> 
-        <button type="button" class="btn btn-sm btn-default no-text-shadow">
-          <i class="i i-grid"></i>
-        </button> 
-      </div>
+       
+      
     </div>
     <div class="col-sm-4">
       
@@ -18,7 +16,21 @@
     </div>
   </div>
 </header>
-<section class="scrollable top61 wrapper">
+<section class="filters bg-white b-b top61">
+  <div class="p-xl">
+    <div class="brokers">
+      <div class="row">
+        <div class="col-sm-3">
+          Brokers
+        </div>
+        <div class="col-sm-9">
+          Brokers dropdown
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="scrollable wrapper">
   <div class="panel-body">
     <p class="bold">
       Showing 
@@ -33,7 +45,7 @@
         <div class="market-widget-top">
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="blue"><%= deal.property_name %></h3>
+              <h3><%= link_to deal.property_name, deal, class: "blue" %></h3>
               <p class="market-time-ago"><%= deal.city %>, <%= deal.state %> <%= deal.owner_name %></p>
             </div>
             <div class="col-sm-6">
@@ -85,7 +97,14 @@
   </div>
 </section>
 
-
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#filter_btn").click(function() {
+      $(".filters").slideToggle();
+      $(".scrollable.wrapper").toggleClass("top61");
+    });
+  });
+</script>
 
 
 

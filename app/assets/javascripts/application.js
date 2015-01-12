@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.cookie
+//= require jquery-fileupload
+//= require jquery-fileupload/vendor/tmpl
 //= require bootstrap
 //= require bootstrap-wysihtml5
+//= require spin
 //= require app
 //= require chat
 //= require users
@@ -38,3 +40,15 @@ $(document).ready(function() {
  
 
 });
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,125 +1,160 @@
-<%= form_for [@deal, ImageGallery.new] do |f| %>
-  <div class="p-xl">
-    <div class="add-page">
-      <div class="row">
-        <div class="col-md-12">
-          <% if @deal.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
-              <ul>
-              <% @deal.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <h3 style="margin-top:0">Upload Photos</h3>
-          <p class="text-muted m-b-lg">
-            You can upload as many photos as you want.
-          </p>
-          <%= f.file_field :deal_images, as: :file, class: "filestyle", id: "lefile", style: "position:fixed; left:-500px;" %>
-          <div class="bootstrap-filestyle" style="display: inline;">
-            <label for="lefile" class="btn btn-default btn-square no-text-shadow">
-              <i class="i i-images"></i><br>
-              <span>Upload Image</span>
-            </label>
-          </div>
-          <div class="row">
-            
-            <% ImageGallery.where(deal_id: @deal).each do |image| %>
-              
-                <%= image_tag(image.deal_images.url(:thumb), class: "img-thumbnail") %>                 
-             
-            <% end %>
-            <div class="upload-preview-options">
-              <%= image_tag("blank.gif", id: "pageimage") %>
-            </div>
-          </div>
-        </div>
-        <div class="actions">
-          <%= f.submit "Save", class: "btn btn-success", style: "" %>
-        </div>
+<div class="p-xl">
+  <h3 style="margin-top:0;">Add Photos</h3>
+  <p class="text-muted m-b-lg">
+    Add all photos for this property.
+  </p>
+  <%= form_for [@deal, ImageGallery.new], html: { multipart: true, id: "fileupload" } do |f| %>
+  <div class="fileupload-buttonbar">
+    <div class="">
+      <!-- The fileinput-button span is used to style the file input field as button -->
+      <%= f.file_field :deal_images, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;" %>
+      <div class="bootstrap-filestyle" style="display: inline;">
+        <label for="lefile" class="btn btn-default btn-square fileinput-button no-text-shadow">
+          <i class="i i-images"></i><br>
+          <span>Upload Image</span>
+        </label>
+      </div> 
+      <table class=""><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+      </table>       
+    </div>
+    <div class="">
+      <!-- The global progress bar -->
+      <div class="progress progress-success progress-striped active fade">
+        <div class="bar" style="width:0%;"></div>
       </div>
     </div>    
   </div>
+  <!-- The loading indicator is shown during image processing -->
+  <div class="fileupload-loading"></div>
+  <!-- The table listing the files available for upload/download -->
+  
 <% end %>
-
+</div>
 <script>
-  $(document).ready(function() {
+  var fileUploadErrors = {
+  maxFileSize: 'File is too big',
+  minFileSize: 'File is too small',
+  acceptFileTypes: 'Filetype not allowed',
+  maxNumberOfFiles: 'Max number of files exceeded',
+  uploadedBytes: 'Uploaded bytes exceed file size',
+  emptyResult: 'Empty file upload result'
+  };
+</script>
 
-    $('input').change(function() {
-
-      $('#address_form').submit(); 
-      $('#feedback').show();     
-      $('#feedback').text("saved").fadeOut('slow');
-
-    });
-
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  <tr class="template-upload fade pull-left">
     
-
-    $('#continue-btn').click(function() {
-      $('#address_form').submit(); 
-    });
-
-    $('.nav-main li a').click(function() {
-      $('#address_form').submit();
-    });
-
     
-   
+    {% if (file.error) { %}
+    <td class="error" colspan="2">
+      <span class="label label-important">
+        {%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+    {% } else if (o.files.valid && !i) { %}
+    <td>
+      <div class="img-thumbnail" style="width:150px; height:150px;">
+        <span class="text-center">Uploading</span> 
+        <div style="position:relative; left:28%; top:20%">
+        <div id="floatingCirclesG">
+          <div class="f_circleG" id="frotateG_01">
+          </div>
+          <div class="f_circleG" id="frotateG_02">
+          </div>
+          <div class="f_circleG" id="frotateG_03">
+          </div>
+          <div class="f_circleG" id="frotateG_04">
+          </div>
+          <div class="f_circleG" id="frotateG_05">
+          </div>
+          <div class="f_circleG" id="frotateG_06">
+          </div>
+          <div class="f_circleG" id="frotateG_07">
+          </div>
+          <div class="f_circleG" id="frotateG_08">
+          </div>
+        </div> 
+        </div>
+      </div>
+    </td>
+    
+    <td class="start">{% if (!o.options.autoUpload) { %}
+      <button class="btn btn-primary" style="display:none">
+        <i class="icon-upload icon-white"></i>
+        <span>{%=locale.fileupload.start%}</span>
+      </button>
+      {% } %}</td>
+    {% } else { %}
+    <td colspan="2"></td>
+    {% } %}
+    
+  </tr>
+  {% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <div class="template-download fade pull-left">
+      {% if (file.error) { %}
+        <td></td>
+        <td class="name"><span>{%=file.name%}</span></td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else { %}
+        <div class="pull-left">
+        <div class="preview m-r">
+{% if (file.thumbnail_url) { %}
+          <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img class="img-thumbnail" src="{%=file.thumbnail_url%}"></a>
+          {% } %}</div>
+        
+        
+       
+        {% } %}
+      <div class="delete m-b m-t">
+        <button class="btn btn-default no-text-shadow" data-type="{%=file.delete_type%}" data-url="image_galleries/{%=file.delete_url%}">
+          <i class="i i-trashcan"></i>
+        </button>
+      </div>
+      </div>
+    </div>
+    {% } %}
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+      // Initialize the jQuery File Upload widget:
+      $('#fileupload').fileupload();
+      // 
+      // Load existing files:
+      $.getJSON($('#fileupload').prop('action'), function (files) {
+        var fu = $('#fileupload').data('blueimpFileupload'), 
+          template;
+        fu._adjustMaxNumberOfFiles(-files.length);
+        console.log(files);
+        template = fu._renderDownload(files)
+          .appendTo($('#fileupload .files'));
+        // Force reflow:
+        fu._reflow = fu._transition && template.length &&
+          template[0].offsetWidth;
+        template.addClass('in');
+        $('#loading').remove();
+      });
 
   });
-
-  function add_fields(link, association, content) {
-        var new_id = new Date().getTime();
-        var regexp = new RegExp("new_" + association, "g");
-        $(link).parent().append(content.replace(regexp, new_id));
-        var id = "deal_image_galleries_attributes_" + new_id + "_deal_images";
-        
-        // File submit gets clicked automatically after Add Image btn is clicked on Availability page
-        $("#" + id).click();
-        $(".parent > .preview-col:last").hide();
-        $(".parent > .preview-col > .fields > .upload-preview:last img").addClass(id);
-   
-
-        // Preview image on Upload Photos page before submit
-        var preview = $(".upload-preview img." + id);
-        // File input change on Availability page
-        $("#" + id).change(function(event){
-            var input = $(event.currentTarget);
-            var file = input[0].files[0];
-            var reader = new FileReader();
-
-            reader.onload = function(e){
-                image_base64 = e.target.result;
-                preview.attr("src", image_base64);
-            };
-
-            reader.readAsDataURL(file);  
-
-            preview.addClass('preview-img-border');
-           $(".parent > .preview-col:last").show();
-        });     
-
-        
-
-    }
 </script>
-<style type="text/css">
-#display-none-preview > .preview-col:first-of-type {
-  width: 0px;
-}
-#display-none-preview > .preview-col:first-of-type > .fields > .upload-preview,
-#display-none-preview > .preview-col:first-of-type > .fields > .row > .col-md-12 > .btn-group {
-  display: none;
-  width: 0px;
-}
-</style>
+
+<script type="text/javascript">
+ 
+     $("#fileupload").change(function() {
+      $(".start .btn").click();
+    });
+    
+   // $('.col .nav li a').click(function() {
+   //    location.reload();
+   //  });
 
 
-
-
-
+</script>
 
 
 

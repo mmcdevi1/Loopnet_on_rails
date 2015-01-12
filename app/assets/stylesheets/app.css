@@ -684,7 +684,7 @@ body {
   z-index: -1;
   display: block;
   width: inherit;
-  background-color: #f5f5f5;
+  background-color: #fbfcfd;
   border: inherit;
   content: "";
 }
@@ -893,7 +893,7 @@ body {
   display: inline-block;
   float: none;
   height: auto;
-  padding: 0 20px;
+  padding: 0px;
   font-size: 20px;
   font-weight: 700;
   line-height: 50px;
@@ -916,7 +916,7 @@ body {
   .navbar-header {
     width: 200px;
   }
-  .navbar-collapse,
+  .navbar-collapse {}
   .app-content,
   .app-footer {
     margin-left: 200px;
@@ -1084,7 +1084,6 @@ body {
 }
 
 html {
-  background: url('../img/bg.jpg');
   background-attachment: fixed;
   background-size: cover;
 }
@@ -1884,8 +1883,8 @@ fieldset[disabled] .btn-success.active {
 
 .btn-info {
   color: #fff !important;
-  background-color: #69b4f7;
-  border-color: #5b9dd7;
+  background-color: #23b7e5;
+  border-color: #1199c4;
 }
 
 .btn-info:hover,
@@ -3667,7 +3666,7 @@ fieldset[disabled] .i-checks input + i:before {
 }
 
 .bg-white a {
-  color: #8991a6;
+  color: #363f44;
 }
 
 .bg-white a:hover {

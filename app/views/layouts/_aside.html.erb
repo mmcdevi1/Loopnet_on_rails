@@ -1,53 +1,83 @@
 <!-- aside -->
-<aside id="aside" class="app-aside hidden-xs bg-white b-r" style="position:fixed; height:100%;">
+<aside id="aside" class="app-aside hidden-xs bg-offwhite" style="position:fixed; height:100%;">
   <div class="aside-wrap">
     <div class="navi-wrap">
       <!-- nav -->
           <nav ui-nav class="navi clearfix" style="padding:20px">
+            <a class="btn btn-info btn-sm btn-block btn-shadow" href="/deals/new">Add New Deal</a>
             <ul class="nav">
               <li class="hidden-folded m-t-lg m-b-sm text-xs nav-sm-title">
                 <span>Menu</span>
               </li>
               <li>
-                <%= link_to root_path, class: "auto", data: { toggle: "tooltip", placement: "right" }, title: "Dashboard" do %>
-                  <i class="i i-statistics text-info-lter"></i>
+                <%= link_to root_path, class: "auto", title: "Dashboard" do %>
+                  <i class="i i-statistics"></i>
                   <span class="">Dashboard</span>
                 <% end %>           
               </li>
               <li>
-                <a href="" class="auto" data-toggle="tooltip" data-placement="right" title="Inbox">
-                  <i class="i i-mail2 text-info-lter"></i>
+                <a href="" class="auto">
+                  <i class="i i-mail2"></i>
                   <span class="">Inbox</span>
                 </a>
               </li>
               <li>
-               <%= link_to market_path, class: "auto", data: { toggle: "tooltip", placement: "right" }, title: "Market" do %>
+               <%= link_to market_path, class: "auto", title: "Market" do %>
                   <b class="badge bg-info pull-right"><%= Deal.count %></b>
-                  <i class="i i-chart text-info-lter"></i>
+                  <i class="i i-chart"></i>
                   <span class="">Market</span>                              
                 <% end %>           
               </li>
               <li>
-                <%= link_to deals_path, class: "auto", data: { toggle: "tooltip", placement: "right" }, title: "My Pipeline" do %>
-                  <i class="i i-paperplane text-info-lter"></i>
+                <%= link_to deals_path, class: "auto", title: "My Pipeline" do %>
+                  <i class="i i-paperplane"></i>
                   <span class="">My Pipeline</span>
                 <% end %>          
               </li>
               <li>
                 <a href="" class="auto">
-                  <i class="i i-calendar text-info-lter"></i>
+                  <i class="i i-calendar"></i>
                   <span class="">Calendar</span>
                 </a>
               </li>
               <li>
                 <a href="" class="auto">
-                  <i class="i i-bubble text-info-lter"></i>
+                  <i class="i i-bubble"></i>
                   <span class="">Contacts</span>
                 </a>
               </li>
+              <li class="hidden-folded m-t-lg m-b-sm text-xs nav-sm-title">
+                <span>Settings</span>
+              </li>
+              <li>
+                <%= link_to "#", class: "auto", title: "Dashboard" do %>
+                  <i class="i i-statistics"></i>
+                  <span class="">Account</span>
+                <% end %>           
+              </li>
+              <li>
+                <a href="" class="auto">
+                  <i class="i i-mail2"></i>
+                  <span class="">Integration</span>
+                </a>
+              </li>
+              <li>
+               <%= link_to "#", class: "auto", title: "Market" do %>
+                  <i class="i i-chart"></i>
+                  <span class="">Notification</span>                              
+                <% end %>           
+              </li>
+              <li>
+                <%= link_to "#", class: "auto", title: "My Pipeline" do %>
+                  <i class="i i-paperplane"></i>
+                  <span class="">Billing</span>
+                <% end %>          
+              </li>
             </ul>
+             
           </nav>
           <!-- nav -->
+          
 
         
         </div>

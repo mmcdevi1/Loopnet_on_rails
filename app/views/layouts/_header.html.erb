@@ -1,27 +1,17 @@
-<div class="app app-header-fixed app-aside-folded">
+<div class="app app-header-fixed">
 <!-- header -->
   <header id="header" class="app-header navbar" role="menu">
     <!-- navbar header -->
-      <div class="navbar-header bg-info lter">
-        <button class="pull-right visible-xs dk" ui-toggle="show" target=".navbar-collapse">
-          <i class="glyphicon glyphicon-cog"></i>
-        </button>
-        <button class="pull-right visible-xs" ui-toggle="off-screen" target=".app-aside" ui-scroll="app">
-          <i class="glyphicon glyphicon-align-justify"></i>
-        </button>
-        <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
-          <i class="i i-chat2" style="position:relative; top:3px;"></i>
-        </a>
-        <!-- / brand -->
-      </div>
+      
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
       <div class="collapse pos-rlt navbar-collapse bg-white b-b box-shadow">
         <!-- buttons -->
         <div class="nav navbar-nav hidden-xs">
-          <a class="btn btn-danger btn-sm navbar-btn btn-shadow" href="/deals/new" style="width:150px;">Add New Deal</a>
+          <a href="#/" class="navbar-brand text-lt">
+          <i class="i i-chat2 text-info" style="position:relative; top:3px;"></i>
+        </a>
 
         </div>
         <!-- / buttons -->
@@ -48,7 +38,7 @@
                 <div class="list-group">
                   <a href class="media list-group-item">
                     <span class="pull-left thumb-sm">
-                      <img src="img/a0.jpg" alt="..." class="img-circle">
+                      <%= image_tag('a5.jpg') %>
                     </span>
                     <span class="media-body block m-b-none">
                       Use awesome animate.css<br>
@@ -73,10 +63,10 @@
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <%= image_tag('a0.jpg') %>
+                <%= image_tag('a5.jpg') %>
                 <i class="on md b-white bottom"></i>
               </span>
-              <span class="hidden-sm hidden-md"><%= full_name %></span> <b class="caret"></b>
+              <span class="hidden-sm hidden-md"><%= full_name %></span> <i class="i i-arrow-down5"></i>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
@@ -105,7 +95,7 @@
               </li>
               <li class="divider"></li>
               <li>
-                <a ui-sref="access.signin">Logout</a>
+                <%= link_to "Logout", logout_path %>
               </li>
             </ul>
             <!-- / dropdown -->

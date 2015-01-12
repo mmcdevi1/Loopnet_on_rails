@@ -1,41 +1,102 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Property name:</strong>
-  <%= @deal.property_name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @deal.user_id %>
-</p>
-
-<p>
-  <strong>Property address:</strong>
-  <%= @deal.property_address %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @deal.state %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @deal.city %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @deal.zipcode %>
-</p>
-
-<p>Contacts</p>
-<% @contacts.each do |c| %>
-  <div>
-    <%= c.full_name %>
+<div class="p-xl">
+  <h3 style="margin:0;" class="bold uppercase"><%= @deal.property_name %></h3>
+  <p>Irvington, NY 10533</p>
+  <div class="row-col-8">
+    <div class="col-8-sm-3" id="col-8-1">
+      <div>
+        <%= image_tag(@image.deal_images.url(:small), class: "img-responsive img-thumbnail") %>        
+      </div>
+    </div>
+    <div class="col-8-sm-1" id="col-8-2">
+      <div style="background:#a298d0; color:white; height:100%; margin-bottom:20px; padding:15px; position:relative;">
+        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Property Class</h3>
+        <span class="bold" style="position:absolute; bottom:0; font-size:36px;">
+          <%= @deal.property_class %>
+        </span>
+      </div>
+      <div style="background:#f18282; color:white; height:100%; padding:15px; position:relative;">
+        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Percent Leased</h3>
+        <span class="bold" style="position:absolute; bottom:0; font-size:36px;">
+          <%= @deal.percent_leased %>%
+        </span>
+      </div>
+    </div>
+    <div class="col-8-sm-2" id="col-8-3">
+      <div style="background:#64bae7; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
+        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Estimated Original Debt</h3>
+        <div style="position:absolute; bottom:0; ">
+          <span class="bold" style="font-size:36px;">
+            $8,500,000          
+          </span>
+        </div>
+      </div>
+      <div style="background:#a3df97; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
+        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Most Recent Mortgage</h3>
+        <span class="bold" style="position:absolute; bottom:0; font-size:36px;">
+          1/10/2015
+        </span>
+      </div>
+     </div>
+    <div class="col-8-sm-2" id="col-8-4">
+      <div style="background:#d3c576; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
+        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Square Footage</h3>
+        <div style="position:absolute; bottom:0; ">
+          <span class="bold" style="font-size:36px;">
+            <%= number_with_delimiter(@deal.sf) %>         
+          </span>
+          <span class="bold">sf</span>
+        </div>
+      </div>
+      <div style="background:#98cdd0; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
+        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Most Recent Mortgage</h3>
+        <div style="position:absolute; bottom:0; ">
+          <span class="bold" style="font-size:36px;">
+            $<%= number_with_delimiter("53") %>         
+          </span>
+          <span class="bold">/sf</span>
+        </div>
+      </div>
+     
+    </div>
   </div>
-<% end %>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var width = $("#col-8-1").width();
+    $("#col-8-1").css("height", width);
 
-<%= link_to 'Edit', property_deal_path(@deal) %> |
-<%= link_to 'Back', deals_path %>
+    
+    var width2 = $(".col-8-sm-1").width();
+    $(".col-8-sm-1").css("height", width2);
+    $("#col-8-3").css("height", width2);
+    $("#col-8-4").css("height", width2);
+    $(window).resize(function() {
+      var width = $("#col-8-1").width();
+      $("#col-8-1").css("height", width);
+
+      var width2 = $(".col-8-sm-1").width();
+      $(".col-8-sm-1").css("height", width2);
+
+      $("#col-8-3").css("height", width2);
+      $("#col-8-4").css("height", width2);
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
