@@ -16,20 +16,37 @@
   <div class="p-xl">
     <div class="row">
       <div class="col-sm-12">
+        <% if @contacts.any? %>
+        Showing <%= pluralize(@contacts.count, "Contact") %>
         <table class="table bold uppercase m-b-xl">
           <thead>
             <tr>
               <th>Name</th>
+              <th>Company</th>
+              <th>Phone</th>
+              <th>Title</th>
+              <th>Email</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <% @contacts.each do |contact| %>
-            <tr>
+            <tr id="<%= dom_id(contact) %>">
               <td><%= contact.full_name %></td>
+              <td><%= contact.company %></td>
+              <td><%= contact.phone_number %></td>
+              <td><%= contact.job_title %></td>
+              <td><%= contact.email %></td>
+              <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+              <td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
             <% end %>
           </tbody>
         </table>
+        <% else %>
+        No contacts
+        <% end %>
       </div>
     </div>
   </div>

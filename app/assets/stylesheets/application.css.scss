@@ -417,6 +417,9 @@ bottom: -7px;
 .table.market > tbody > tr:hover {
   background: transparent;
 }
+.table > tbody {
+  background: #fff;
+}
 .table > thead.market-table,
 .table > tbody.market-table {
   background: #fbfaf7;

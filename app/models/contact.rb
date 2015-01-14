@@ -5,4 +5,5 @@ class Contact < ActiveRecord::Base
   validates :email,         presence: true
   validates :phone_number,  presence: true
   validates :job_title,     presence: true
+  validates :company,       presence: true
 end

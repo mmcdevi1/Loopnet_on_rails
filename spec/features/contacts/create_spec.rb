@@ -8,6 +8,7 @@ describe "Creating contacts" do
     options[:email] ||= "m@gmail.com"
     options[:phone_number] ||= "9149805339"
     options[:job_title] ||= "prez"
+    options[:company] ||= "Apex"
 
     visit contacts_path
     click_link "New Contact"
@@ -16,6 +17,7 @@ describe "Creating contacts" do
     fill_in "Email", with: options[:email]
     fill_in "Phone number", with: options[:phone_number]
     fill_in "Job title", with: options[:job_title]
+    fill_in "Company", with: options[:company]
     click_button "Save"
   end
 
@@ -42,7 +44,7 @@ describe "Creating contacts" do
       expect(Contact.count).to eq(1) # testing if contact count is 1 in database
 
       # testing within class table will ensure the redirect is successful after submission
-      within(".table > tbody > tr > td") do 
+      within(".table > tbody > tr#contact_1") do 
         expect(page).to have_content("Dale Jr")
       end
     end

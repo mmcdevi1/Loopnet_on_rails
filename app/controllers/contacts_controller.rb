@@ -1,9 +1,10 @@
 class ContactsController < ApplicationController
-  before_action :set_contacts, except: [:index, :new, :create]
+  before_action :set_contacts, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts.all
   end
 
   def new
@@ -11,6 +12,10 @@ class ContactsController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
+    redirect_to contacts_path
   end
 
   def create
@@ -24,9 +29,18 @@ class ContactsController < ApplicationController
   end
 
   def update
+    if @contact.update_attributes(contacts_params)
+      flash[:success] = "Contact updated."
+      redirect_to contacts_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @contact.destroy
+    flash[:success] = "Contact deleted."
+    redirect_to :back
   end
 
   private
@@ -35,9 +49,15 @@ class ContactsController < ApplicationController
   end
 
   def contacts_params
-    params.require(:contact).permit(:full_name, :email, :phone_number, :job_title)
+    params.require(:contact).permit(:full_name, :email, :phone_number, :job_title, :company)
   end
 
-  
+  def correct_user
+    @contact = Contact.find(params[:id])
+    unless current_user == @contact.user
+      redirect_to root_path
+      flash[:danger] = "You can't do that."
+    end
+  end     
 
 end
