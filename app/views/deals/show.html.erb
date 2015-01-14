@@ -1,78 +1,254 @@
 <div class="p-xl">
   <h3 style="margin:0;" class="bold uppercase"><%= @deal.property_name %></h3>
-  <p>Irvington, NY 10533</p>
-  <div class="row-col-8">
+  <p class="text-muted"><%= @deal.property_address.titleize %>, <%= @deal.city.titleize %>, <%= @deal.state %> <%= @deal.zipcode %></p>
+  <div class="row-col-8 m-b-md">
     <div class="col-8-sm-3" id="col-8-1">
       <div>
         <%= image_tag(@image.deal_images.url(:small), class: "img-responsive img-thumbnail") %>        
       </div>
     </div>
     <div class="col-8-sm-1" id="col-8-2">
-      <div style="background:#a298d0; color:white; height:100%; margin-bottom:20px; padding:15px; position:relative;">
-        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Property Class</h3>
-        <span class="bold" style="position:absolute; bottom:0; font-size:36px;">
+      <div class="property-class metro">
+        <h3>Property Class</h3>
+        <span>
           <%= @deal.property_class %>
         </span>
       </div>
-      <div style="background:#f18282; color:white; height:100%; padding:15px; position:relative;">
-        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Percent Leased</h3>
-        <span class="bold" style="position:absolute; bottom:0; font-size:36px;">
+      <div class="percent-leased metro">
+        <h3>Percent Leased</h3>
+        <span>
           <%= @deal.percent_leased %>%
         </span>
       </div>
     </div>
     <div class="col-8-sm-2" id="col-8-3">
-      <div style="background:#64bae7; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
-        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Estimated Original Debt</h3>
-        <div style="position:absolute; bottom:0; ">
-          <span class="bold" style="font-size:36px;">
-            $8,500,000          
-          </span>
-        </div>
+      <div class="original-debt metro">
+        <h3>Estimated Original Debt</h3>
+        <span>
+          $8,500,000          
+        </span>
       </div>
-      <div style="background:#a3df97; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
-        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Most Recent Mortgage</h3>
-        <span class="bold" style="position:absolute; bottom:0; font-size:36px;">
+      <div class="most-recent-mortgage metro">
+        <h3>Most Recent Mortgage</h3>
+        <span>
           1/10/2015
         </span>
       </div>
      </div>
     <div class="col-8-sm-2" id="col-8-4">
-      <div style="background:#d3c576; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
-        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Square Footage</h3>
-        <div style="position:absolute; bottom:0; ">
-          <span class="bold" style="font-size:36px;">
-            <%= number_with_delimiter(@deal.sf) %>         
-          </span>
-          <span class="bold">sf</span>
-        </div>
+      <div class="square-footage metro">
+        <h3>Square Footage</h3>
+        <span>
+          <%= number_with_delimiter(@deal.sf) %> sf      
+        </span>
       </div>
-      <div style="background:#98cdd0; color:white;height:100%; margin-bottom:20px; padding:15px; position:relative;">
-        <h3 class="bold uppercase" style="margin:0; font-size:14px;">Most Recent Mortgage</h3>
-        <div style="position:absolute; bottom:0; ">
-          <span class="bold" style="font-size:36px;">
-            $<%= number_with_delimiter("53") %>         
-          </span>
-          <span class="bold">/sf</span>
-        </div>
+      <div class="rent metro">
+        <h3>Rent</h3>
+        <span>
+          $<%= number_with_delimiter("53") %>/sf       
+        </span>
+      </div>     
+    </div>
+  </div><!-- end row 8 cols -->
+  <div class="broker m-b-md">
+    <span class="thumb-sm avatar pull-left m-r">
+      <%= image_tag('a4.jpg') %>
+      <i class="on md b-white bottom"></i>
+    </span>
+    <div class="clear">
+      <div>
+        <a class="bold" href="#"><%= @deal.user.firstname %>  <%= @deal.user.lastname %></a>
       </div>
+      <small class="text-muted">CBRE</small>
+    </div>
+  </div><!-- end broker -->
+ </div><!-- end pxl --> 
+  <div class="row">
+    <div class="col-sm-12">
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" style="margin-left:30px;">
+          <li role="presentation" class="active">
+            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+              Analytics
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#financial" aria-controls="financial" role="tab" data-toggle="tab">
+              Financials
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">
+              Summary
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#important_docs" aria-controls="important_docs" role="tab" data-toggle="tab">
+              Important Documents
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#important_dates" aria-controls="important_dates" role="tab" data-toggle="tab">
+              Important Dates
+            </a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content p-xl">
+          <div role="tabpanel" class="tab-pane active" id="home">
+            <h5 class="bold uppercase">Key Mortgage Records</h5>
+            <table class="table bold uppercase m-b-xl">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Borrower</th>
+                  <th>Lender</th>
+                  <th>Note Holder</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1/10/2015</td>
+                  <td>east garden llc</td>
+                  <td>wells fargo</td>
+                  <td>-</td>
+                  <td>$5,000,000</td>
+                </tr>
+                <tr>
+                  <td>1/10/2015</td>
+                  <td>east garden llc</td>
+                  <td>wells fargo</td>
+                  <td>-</td>
+                  <td>$3,000,000</td>
+                </tr>
+              </tbody>
+            </table>
+            <h5 class="bold uppercase">Ownership</h5>
+            <table class="table bold uppercase">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Borrower</th>
+                  <th>Lender</th>
+                  <th>Note Holder</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1/10/2015</td>
+                  <td>east garden llc</td>
+                  <td>wells fargo</td>
+                  <td>-</td>
+                  <td>$5,000,000</td>
+                </tr>
+                <tr>
+                  <td>1/10/2015</td>
+                  <td>east garden llc</td>
+                  <td>wells fargo</td>
+                  <td>-</td>
+                  <td>$3,000,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="financial">
+            <h5 class="bold uppercase">2014 Financial Report</h5>
+            <table class="table bold uppercase">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Borrower</th>
+                  <th>Lender</th>
+                  <th>Note Holder</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1/10/2015</td>
+                  <td>east garden llc</td>
+                  <td>wells fargo</td>
+                  <td>-</td>
+                  <td>$5,000,000</td>
+                </tr>
+                <tr>
+                  <td>1/10/2015</td>
+                  <td>east garden llc</td>
+                  <td>wells fargo</td>
+                  <td>-</td>
+                  <td>$3,000,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="summary">
+            <div class="row">
+              <div class="col-lg-6">
+                <h5 class="bold uppercase">Property Summary</h5>
+                <%= @deal.deal_summary.html_safe %>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="important_docs">
+            <h5 class="bold uppercase">Important Documents</h5>
+            <table class="table bold uppercase">
+              <thead>
+                <tr>
+                  <th>File Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @documents.each do |docs| %>
+                <tr>
+                  <td><%= docs.doc_files_file_name %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="important_dates">
+            <h5 class="bold uppercase">Important Dates</h5>
+            <table class="table bold uppercase">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @dates.each do |date| %>
+                <tr>
+                  <td><%= date.title %></td>
+                  <td><%= date.date %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+  </div>
      
     </div>
   </div>
+
+<div class="app-footer wrapper b-t bg-white ng-scope text-center box-shadow-inset" style="position:fixed; padding:30px;" id="fixedfooter">
+  <button class="btn btn-danger btn-lg btn-shadow" style="width:300px;">Add to pipeline</button>
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
-    var width = $("#col-8-1").width();
-    $("#col-8-1").css("height", width);
-
+    
     
     var width2 = $(".col-8-sm-1").width();
     $(".col-8-sm-1").css("height", width2);
     $("#col-8-3").css("height", width2);
     $("#col-8-4").css("height", width2);
     $(window).resize(function() {
-      var width = $("#col-8-1").width();
-      $("#col-8-1").css("height", width);
+      
 
       var width2 = $(".col-8-sm-1").width();
       $(".col-8-sm-1").css("height", width2);

@@ -15,6 +15,7 @@ describe "registering new users" do
     fill_in "Password", with: "koplop"
     fill_in "Confirm Password", with: "koplop"
     click_button "REGISTER"
+    expect(User.count).to eq(1)
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
@@ -51,7 +52,7 @@ describe "registering new users" do
         fill_in "First Name", with: "Michael"
         fill_in "Last Name", with: "McDevitt"
         fill_in "Username", with: user.username
-        fill_in "Email Address", with: "mmcdevi1@gmail.com"
+        fill_in "Email Address", with: user.email
         fill_in "Password", with: "koplop"
         fill_in "Confirm Password", with: "koplop"
         click_button "REGISTER"

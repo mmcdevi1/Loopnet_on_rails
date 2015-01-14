@@ -6,13 +6,13 @@ Pipeline::Application.routes.draw do
       get '/property', to: 'deals#property_information'
       get '/overview', to: 'deals#overview'      
     end
-    resources :contacts
     get '/photos', to: 'image_galleries#index'
     resources :image_galleries
     resources :important_docs
     resources :important_dates
   end
 
+  resources :contacts
   
   
 

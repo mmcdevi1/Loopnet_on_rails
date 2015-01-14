@@ -52,8 +52,8 @@ body {
   position: absolute;
   right: 20px;
   top:20px;
-  width: 150px;
-  z-index: 1000;
+  width: 500px;
+  z-index: 5000;
 }
 .white-bg {
     background: #fff;
@@ -218,16 +218,17 @@ iframe {
     padding: 0;
 }
 .market-widget-content {
-    padding: 10px;
+    padding: 0px;
 }
 .market-widget-right {
     float: right;
     width: 80%;
+    border-left:1px solid #E9E8E6;
 }
 .market-widget-left {
     float: left;
     width: 20%;
-    padding: 0px;
+    padding: 10px;
     
 }
 .market-widget-right .table {
@@ -398,10 +399,23 @@ bottom: -7px;
   border-bottom: 0px;
 }
 .table {
-  border:none;   
+  border:1px solid #d4d9df;   
 }
 .table > thead {
-  background:#f6f7fa;
+  background:#fbfcfd;
+}
+.table.market {
+  border: none;
+}
+.table.market > thead > tr,
+.table.market > tbody > tr {
+  font-size: 14px;
+}
+.table.market > tbody > tr > td {
+  padding: 12px;
+}
+.table.market > tbody > tr:hover {
+  background: transparent;
 }
 .table > thead.market-table,
 .table > tbody.market-table {
@@ -409,8 +423,15 @@ bottom: -7px;
   border-bottom: 1px solid #e9e8e6;
 }
 .table > thead > tr {
-  color: #666;
-  font-size: 14px;
+  color: #a3b1ba;
+  font-size: 11px;
+}
+.table > tbody > tr:hover {
+  background:#d8f4ff;
+}
+.table > tbody > tr {
+  color: #1b374f;
+  font-size: 11px;
 }
 .btn-lg {
   padding: 13px 16px;
@@ -424,6 +445,9 @@ bottom: -7px;
 .box-shadow,
 .market-widget {
   box-shadow: 0 2px 1px rgba(0,0,0,0.04);
+}
+.box-shadow-inset {
+  box-shadow: 0 -2px 1px rgba(0,0,0,0.04);
 }
 .p-md {
     padding: 15px;
@@ -1045,10 +1069,56 @@ background-color:#FFFFFF}
   color: #4f90d4;
 }
 
+.metro {
+  color:white; 
+  height:100%; 
+  
+  padding:15px; 
+  position:relative;
+  font-family:'AvenirLT-Black';
 
+  h3 {
+    margin:0; 
+    font-size:14px;
+    text-transform: uppercase;
+  }
 
+  span {
+    position:absolute; 
+    bottom:0; 
+    font-size:36px;
+  }
+}
+.property-class,
+.original-debt,
+.square-footage {
+  margin-bottom:20px; 
+}
+.property-class {
+  background:#a298d0; 
+}
+.percent-leased {
+  background:#f18282; 
+}
+.original-debt {
+  background:#64bae7;
+}
+.most-recent-mortgage {
+  background:#a3df97;
+}
+.square-footage {
+  background:#d3c576;
+}
+.rent {
+  background:#98cdd0;
+}
 
-
+.tab-content {
+  border-top:1px solid #dee5e7; 
+  background:#fff; 
+  padding-bottom:106px; 
+  min-height:600px;
+}
 
 
 

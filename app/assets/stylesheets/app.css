@@ -486,13 +486,13 @@ a.list-group-item.hover {
 
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 13px 15px 11px;
+  padding: 8px 15px;
   border-top: 1px solid #e0e0e0;
 }
 
 .table > thead > tr > th {
   padding: 8px 15px;
-  border-bottom: 1px solid #eaeff0;
+  border-bottom: 1px solid #d4d9de;
 }
 
 .table-bordered {

@@ -14,6 +14,8 @@ class DealsController < ApplicationController
   def show
     @contacts = @deal.contacts.all
     @image = @deal.image_galleries.first
+    @documents = @deal.important_docs.all
+    @dates = @deal.important_dates.all
   end
 
   # GET /deals/new
