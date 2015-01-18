@@ -98,7 +98,7 @@ class DealsController < ApplicationController
     @add_to_pipeline = AddToPipeline.where(user_id: current_user, deal_id: @deal.id).first
     @add_to_pipeline.destroy
     redirect_to :back
-    flash[:success] = "Deal has been removed from your Pipeline."
+    flash[:danger] = "Deal has been removed from your Pipeline."
   end
 
   private

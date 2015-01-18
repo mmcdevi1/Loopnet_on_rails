@@ -1,6 +1,6 @@
 class CreateContactForDeals < ActiveRecord::Migration
   def change
-    drop_table :contact_for_deals
+    # drop_table :contact_for_deals
     create_table :contact_for_deals do |t|
       t.integer :deal_id
       t.integer :user_id
