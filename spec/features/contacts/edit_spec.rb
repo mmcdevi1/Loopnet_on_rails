@@ -3,20 +3,8 @@ require 'spec_helper'
 describe "Editing contact items" do 
   let!(:user1)  { FactoryGirl.create(:user) }
   let!(:user2)  { FactoryGirl.create(:user) }
-  let!(:contact_from_user1) { user1.contacts.create(
-                      full_name: "John Doe", 
-                      phone_number: "1231231234", 
-                      job_title: "VP", 
-                      email: "jdoe@gmail.com",
-                      company: "Apex Equities") 
-                  }
-  let!(:contact_from_user2) { user2.contacts.create(
-                      full_name: "Kevin McCallister", 
-                      phone_number: "9879879887", 
-                      job_title: "President", 
-                      email: "kmc@gmail.com",
-                      company: "Apex Equities") 
-                  }
+  let!(:contact_from_user1) { FactoryGirl.create(:contact) }  
+  let!(:contact_from_user2) { FactoryGirl.create(:contact) }   
 
   def update_contact(options={})
     options[:full_name] ||= "Dale Jr"

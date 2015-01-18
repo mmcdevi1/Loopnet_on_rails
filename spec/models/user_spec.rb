@@ -9,6 +9,7 @@ describe User do
     it { should have_many(:important_docs) }
     it { should have_many(:important_dates) }
     it { should have_many(:conversations) }
+    it { should have_many(:add_to_pipelines) }
   end
 
   describe "validations" do 

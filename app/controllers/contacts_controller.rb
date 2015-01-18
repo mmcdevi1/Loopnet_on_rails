@@ -9,6 +9,10 @@ class ContactsController < ApplicationController
 
   def new
     @contact = current_user.contacts.new
+    if flash[:success]
+      flash[:success] = "Contact created."
+      redirect_to contacts_path
+    end
   end
 
   def edit
@@ -22,7 +26,7 @@ class ContactsController < ApplicationController
     @contact = current_user.contacts.new(contacts_params)
     if @contact.save
       flash[:success] = "Contact created."
-      redirect_to contacts_path
+      redirect_to :back
     else
       render 'new'
     end

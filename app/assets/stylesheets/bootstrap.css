@@ -4449,10 +4449,14 @@ a.thumbnail.active {
   color: #333;
 }
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 17px 15px 14px 15px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  position:absolute; 
+  top: 0; 
+  z-index:9000; 
+  width:100%;
+  text-align: center;
+  text-transform: uppercase;
 }
 .alert h4 {
   margin-top: 0;
@@ -4477,10 +4481,10 @@ a.thumbnail.active {
   right: -21px;
   color: inherit;
 }
-.alert-success {
-  color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+.alert-success,
+.alert-notice {
+  color: #FFFFFF;
+  background-color: #27C24C;
 }
 .alert-success hr {
   border-top-color: #c9e2b3;

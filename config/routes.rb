@@ -1,15 +1,21 @@
 Pipeline::Application.routes.draw do
 
+  get 'contact_for_deals/index'
+
   resources :deals do
     member do 
       get '/address',  to: 'deals#address'
       get '/property', to: 'deals#property_information'
-      get '/overview', to: 'deals#overview'      
+      get '/overview', to: 'deals#overview'  
+      post 'add_to_pipeline'   
+      match '/remove_deal', to: 'deals#remove_from_pipeline', via: :delete   
     end
     get '/photos', to: 'image_galleries#index'
     resources :image_galleries
     resources :important_docs
     resources :important_dates
+    get '/contacts', to: 'contact_for_deals#index'   
+    resources :contact_for_deals 
   end
 
   resources :contacts

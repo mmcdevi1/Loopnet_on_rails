@@ -34,7 +34,7 @@
 $(document).ready(function() {
 
 	setTimeout(function () {
-		$('#alert-fadeout').fadeOut('slow');
+		$('.alert').fadeOut('slow');
 	}, 1000);
 	
  

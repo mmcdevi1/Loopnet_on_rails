@@ -2,19 +2,9 @@
 <html>
   <%= render 'layouts/head' %>
   <body>
-     
-      <%= render 'layouts/header' %>
-      
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>" id="alert-fadeout">
-          <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-          </button>
-          <%= value %>
-        </div>
-      <% end %>
-      <%= render 'layouts/aside' %>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash' %>
+    <%= render 'layouts/aside' %>
       <div id="content" class="app-content" role="main">
         <div class="app-content-body ">
           <div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="

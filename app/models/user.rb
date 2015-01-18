@@ -21,5 +21,6 @@ class User < ActiveRecord::Base
 	has_many :deals
   has_many :conversations, :foreign_key => :sender_id
   has_many :important_dates, :dependent => :destroy
+  has_many :add_to_pipelines, :dependent => :destroy
   
 end

@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114214703) do
+ActiveRecord::Schema.define(version: 20150118010349) do
+
+  create_table "add_to_pipelines", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "deal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "add_to_pipelines", ["deal_id"], name: "index_add_to_pipelines_on_deal_id"
+  add_index "add_to_pipelines", ["user_id"], name: "index_add_to_pipelines_on_user_id"
+
+  create_table "contact_for_deals", force: true do |t|
+    t.integer  "deal_id"
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contact_for_deals", ["contact_id"], name: "index_contact_for_deals_on_contact_id"
+  add_index "contact_for_deals", ["deal_id"], name: "index_contact_for_deals_on_deal_id"
+  add_index "contact_for_deals", ["user_id"], name: "index_contact_for_deals_on_user_id"
 
   create_table "contacts", force: true do |t|
     t.string   "full_name"

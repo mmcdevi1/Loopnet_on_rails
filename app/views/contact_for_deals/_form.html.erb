@@ -1,0 +1,23 @@
+<%= form_for [@deal, ContactForDeal.new] do |f| %>
+  <div class="form-group">
+    <%= f.label :contact_id, "Contact" %>
+    <div class="btn-group m-r">
+      <button data-toggle="dropdown" class="btn btn-lg btn-default dropdown-toggle no-text-shadow">
+        <span class="dropdown-label" data-placeholder="Please select">Select</span> 
+        <span class="caret" style="margin-left:30px;"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-select max-height-400">
+        <% @contacts.each do |contact| %>
+          <li>
+            <a href="#">
+              <%= f.radio_button :contact_id, contact.id, id: "contact_radio_#{contact.id}" %>
+              <%= contact.full_name %>
+            </a>
+          </li>
+        <% end %>
+      </ul>        
+    </div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %><!-- end form -->
+<%= contact_list %>

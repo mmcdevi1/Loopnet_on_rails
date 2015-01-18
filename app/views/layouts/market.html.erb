@@ -10,12 +10,7 @@
         	<section>
 	        	<section class="vbox">
 		        	<%= render 'layouts/header' %>
-		        	<% flash.each do |type, message| %>
-								<div class="alert <%= flash_class type %>" id="alert-fadeout">
-									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-									<%= message %>
-								</div>
-							<% end %>	
+		        	<%= render 'layouts/flash' %>
               <section class="hbox stretch">
                 <aside class="bg-white lt b-r b-light aside-lg hidden-print">          
                   <section class="vbox">

@@ -4,9 +4,9 @@
     <div class="navi-wrap">
       <!-- nav -->
           <nav ui-nav class="navi clearfix" style="padding:20px">
-            <a class="btn btn-info btn-sm btn-block btn-shadow" href="/deals/new">Add New Deal</a>
+            <%= add_new_deal_btn  %>
             <ul class="nav">
-              <li class="hidden-folded m-t-lg m-b-sm text-xs nav-sm-title">
+              <li class="hidden-folded m-b-sm text-xs nav-sm-title">
                 <span>Menu</span>
               </li>
               <li>
@@ -23,7 +23,7 @@
               </li>
               <li>
                <%= link_to market_path, class: "auto", title: "Market" do %>
-                  <b class="badge bg-info pull-right"><%= Deal.count %></b>
+                  <b class="badge bg-info pull-right"><%= Deal.where(publish: true).count %></b>
                   <i class="i i-chart"></i>
                   <span class="">Market</span>                              
                 <% end %>           

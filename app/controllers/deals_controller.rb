@@ -1,6 +1,8 @@
 class DealsController < ApplicationController
   before_action :set_deal, except: [:index, :new, :create]
   before_action :authenticate_user!
+  before_action :correct_user, except: [:index, :show, :new]
+
   layout :deal_layout
 
   # GET /deals
@@ -82,14 +84,21 @@ class DealsController < ApplicationController
     end
   end
 
-  def deal_layout
-    if params[:action] == "new"
-      "deals_new"
-    elsif params[:action] == "index" || params[:action] == "show"
-      "application"
-    else
-      "deals"
-    end      
+  def add_to_pipeline
+    @deal = Deal.find(params[:id])
+    @add_to_pipeline = @deal.add_to_pipelines.new
+    @add_to_pipeline.user = current_user
+    @add_to_pipeline.save
+    redirect_to :back
+    flash[:success] = "Deal has been added to your Pipeline."
+  end  
+
+  def remove_from_pipeline
+    @deal = Deal.find(params[:id])
+    @add_to_pipeline = AddToPipeline.where(user_id: current_user, deal_id: @deal.id).first
+    @add_to_pipeline.destroy
+    redirect_to :back
+    flash[:success] = "Deal has been removed from your Pipeline."
   end
 
   private
@@ -116,8 +125,27 @@ class DealsController < ApplicationController
                                    :property_class,
                                    :property_type,
                                    :deal_title,
-                                   :deal_summary)
+                                   :deal_summary,
+                                   :publish)
     end
+
+    def correct_user
+      @deal = Deal.find(params[:id])
+      unless current_user == @deal.user
+        redirect_to root_path
+        flash[:danger] = "You can't do that."
+      end
+    end  
+
+    def deal_layout
+      if params[:action] == "new"
+        "deals_new"
+      elsif params[:action] == "index" || params[:action] == "show"
+        "application"
+      else
+        "deals"
+      end      
+    end  
 end
 
 

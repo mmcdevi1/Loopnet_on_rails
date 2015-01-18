@@ -4,12 +4,8 @@
   <body>
     
       <%= render 'layouts/header' %>
-      <% flash.each do |type, message| %>
-        <div class="alert <%= flash_class type %>" id="alert-fadeout">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <%= message %>
-        </div>
-      <% end %> 
+      <%= render 'layouts/flash' %>
+     
       <%= render 'layouts/aside' %>
       <div id="content" class="app-content" role="main">
         <div class="wrapper bg-white b-b box-shadow fixedheader" id="fixedheader2">   
@@ -19,7 +15,10 @@
             </span>
           </div>   
           <div class="btn-toolbar">     
-            <button href="#" class="btn btn-sm btn-info btn-shadow pull-right">Publish</button>
+            <%= form_for(@deal) do |f| %>
+              <%= f.hidden_field :publish, value: true %>
+              <%= f.submit "Publish", class: "btn btn-sm btn-info btn-shadow pull-right" %>
+            <% end %>
           </div>
         </div>
         <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MailCtrl" style="padding-top:61px">

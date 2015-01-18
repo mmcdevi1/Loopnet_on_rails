@@ -71,6 +71,19 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+  def add_new_deal_btn
+		if current_user.type_of_user == 1
+			link_to "Add New Deal", new_deal_path, class: "btn btn-info btn-sm btn-block btn-shadow m-b-lg"
+		end 
+  end
+
+  def add_to_pipeline_btn(deal)
+  	if AddToPipeline.where(user_id: current_user.id, deal_id: deal.id).any?
+    	link_to "Remove from Pipeline", remove_deal_deal_path(deal), class: "btn btn-danger btn-shadow", id: "btn-market-#{deal.id}", method: :delete
+    else
+    	link_to "Add to Pipeline", add_to_pipeline_deal_path(deal), class: "btn btn-danger btn-shadow", id: "btn-market-#{deal.id}", method: :post
+    end
+  end
 
 
 end
