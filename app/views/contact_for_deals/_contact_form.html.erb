@@ -1,8 +1,9 @@
-<div class="text-center">
-  <div>
-    <%= image_tag('create.jpg') %>
+<div class="p-xl">
+  <div class="text-center">
+    <div>
+      <%= image_tag('create.jpg') %>
+    </div>
+    <h2>No contacts created.<br>
+    <%= link_to "Let's Create one", "#", data: { toggle: 'modal', target: '#contact_modal_form' }, class: "text-info" %></h2>
   </div>
-  <h2>No contacts created.<br>
-  <%= link_to "Let's Create one", "#", data: { toggle: 'modal', target: '#contact_modal_form' }, class: "text-info" %></h2>
-</div>
- 
+ </div>

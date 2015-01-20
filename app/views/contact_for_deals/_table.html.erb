@@ -1,0 +1,58 @@
+<div class="div-table box-shadow">
+  <div class="div-table-head bold box-shadow">
+    <div class="row">
+      <div class="col-sm-3">
+        Name
+      </div>
+      <div class="col-sm-3">
+        Company
+      </div>
+      <div class="col-sm-3">
+        Uploaded
+      </div>
+      <div class="col-sm-3 text-right">
+        Action
+      </div>
+    </div>
+  </div>
+  <div class="div-table-body">
+    <% @contact_for_deals.each do |c| %>
+      <div class="row">             
+        <div class="col-sm-3 bold">
+          <%= Contact.where(id: c.contact_id).first.full_name %>
+        </div>
+        <div class="col-sm-3">
+          <%= Contact.where(id: c.contact_id).first.company %>
+        </div>
+        <div class="col-sm-3">
+          <%= time_ago_in_words(c.updated_at) %> ago
+        </div>
+        <div class="col-sm-3">
+          <span class="pull-right">
+            <a href=""><i class="fa fa-fw m-r-xs fa-pencil text-info"></i></a>
+            <a href="" data-toggle="modal" data-target="#contact<%= c.id %>">
+              <i class="i i-trashcan text-danger"></i>
+            </a>
+          </span>
+        </div>
+        <!-- Modal -->
+          <div class="modal fade" id="contact<%= c.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                  Once this contact is deleted, it's gone forever!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                  <%= link_to "Delete", [@deal, c], method: :delete, class: "btn btn-danger btn-shadow" %>
+                </div>
+              </div>
+            </div>
+          </div><!-- end modal -->
+      </div>
+    <% end %>
+  </div>

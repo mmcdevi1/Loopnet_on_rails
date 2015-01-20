@@ -22,6 +22,10 @@ class ContactForDealsController < ApplicationController
   end
 
   def destroy
+    @deal = Deal.find(params[:deal_id])
+    @contact = @deal.contact_for_deals.find(params[:id])
+    @contact.destroy
+    redirect_to :back
   end
 
   private
