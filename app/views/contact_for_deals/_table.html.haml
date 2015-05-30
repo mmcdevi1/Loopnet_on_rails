@@ -1,0 +1,40 @@
+.div-table.box-shadow
+  .div-table-head.bold.box-shadow
+    .row
+      .col-sm-3
+        Name
+      .col-sm-3
+        Company
+      .col-sm-3
+        Uploaded
+      .col-sm-3.text-right
+        Action
+  .div-table-body
+    - @contact_for_deals.each do |c|
+      .row
+        .col-sm-3.bold
+          = Contact.where(id: c.contact_id).first.full_name
+        .col-sm-3
+          = Contact.where(id: c.contact_id).first.company
+        .col-sm-3
+          = time_ago_in_words(c.updated_at)
+          ago
+        .col-sm-3
+          %span.pull-right
+            %a{:href => ""}
+              %i.fa.fa-fw.m-r-xs.fa-pencil.text-info
+            %a{"data-target" => "#contact#{c.id}", "data-toggle" => "modal", :href => ""}
+              %i.i.i-trashcan.text-danger
+        / Modal
+        .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "contact#{c.id}", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog.modal-dialog-sm
+            .modal-content
+              .modal-header
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                %h4#myModalLabel.modal-title Are you sure?
+              .modal-body
+                Once this contact is deleted, it's gone forever!
+              .modal-footer
+                %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                = link_to "Delete", [@deal, c], method: :delete, class: "btn btn-danger btn-shadow"
+        / end modal

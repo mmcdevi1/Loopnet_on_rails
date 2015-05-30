@@ -1,0 +1,30 @@
+!!!
+%html
+  %body
+    = render 'layouts/head'
+    = render 'layouts/header'
+    = render 'layouts/flash'
+    = render 'layouts/aside'
+    #content.app-content{:role => "main"}
+      .app-content-body
+        .hbox.hbox-auto-xs.hbox-auto-sm{"ng-init" => "\n            app.settings.asideFolded = false; \n            app.settings.asideDock = false;\n          "}
+          / main
+          .col
+            = yield
+          .col.w-md.bg-white-only.b-l.bg-auto.no-border-xs
+            .wrapper-md
+              .m-b-sm.text-md Chat
+              %ul.list-group.no-bg.no-borders.pull-in
+                - User.all.each do |u|
+                  %li.list-group-item
+                    %a.pull-left.thumb-sm.avatar.m-r{:herf => ""}
+                      = image_tag('a4.jpg', class: "img-circle")
+                      %i.on.b-white.bottom
+                    .clear
+                      %div
+                        = link_to u.firstname + " " +  u.lastname, "#", class: "start-conversation", |
+                          "data-sid" => current_user.id, "data-rip" => u.id                          |
+                      %small.text-muted East Gate Capital LLC
+              .text-center
+                %a.btn.btn-sm.btn-primary.padder-md.m-b{:href => ""} More Connections
+      = render 'layouts/footer'

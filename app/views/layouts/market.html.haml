@@ -1,0 +1,29 @@
+!!!
+%html.app-fluid
+  %body
+    = render 'layouts/head'
+    %section.hbox.stretch
+      = render 'layouts/aside_xs'
+      %section#content
+        %section.hbox.stretch
+          %section
+            %section.vbox
+              = render 'layouts/header'
+              = render 'layouts/flash'
+              %section.hbox.stretch
+                %aside.bg-white.lt.b-r.b-light.aside-lg.hidden-print
+                  %section.vbox
+                    %section.w-f.scrollable
+                      .slim-scroll{"data-disable-fade-out" => "true", "data-distance" => "0", "data-height" => "auto", "data-railopacity" => "0.2", "data-size" => "10px"}
+                        / nav
+                        %nav.nav-primary.hidden-xs
+                          12 Properties from 5 Brokers
+                        / / nav
+                = yield
+        %a.hide.nav-off-screen-block{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen", :href => "#"}
+    :javascript
+      $(document).ready(function() {
+        $('#toggle').click(function() {
+          $('#aside_toggle').toggle();
+        });
+      });

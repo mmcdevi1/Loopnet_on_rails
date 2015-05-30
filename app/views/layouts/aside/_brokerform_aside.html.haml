@@ -1,0 +1,45 @@
+.bg-white{:style => "position:fixed; width:239px;"}
+  .text-muted-extra.m-t-sm.text-xs.hidden-nav-xs.padder.text-u-c.font-bold
+    Basic Information
+  %ul.nav.nav-main{"data-ride" => "collapse"}
+    %li
+      = link_to property_deal_path(@deal) do
+        Property Information
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon
+    %li
+      = link_to address_deal_path(@deal) do
+        Property Address
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon
+  .text-muted-extra.text-xs.hidden-nav-xs.padder.m-t-sm.text-u-c.font-bold
+    Description
+  %ul.nav.nav-main{"data-ride" => "collapse"}
+    %li
+      = link_to overview_deal_path(@deal) do
+        Overview
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon
+    %li
+      = link_to deal_photos_path(@deal) do
+        Photos
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon
+  .text-muted-extra.text-xs.hidden-nav-xs.padder.m-t-sm.text-u-c.font-bold
+    Extras
+  %ul.nav.nav-main{"data-ride" => "collapse"}
+    %li
+      = link_to deal_important_docs_path(@deal) do
+        Important Docs
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon
+    %li
+      = link_to deal_important_dates_path(@deal) do
+        Important Dates
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon
+    %li
+      = link_to deal_contacts_path(@deal) do
+        Contacts
+        %span.pull-right.text-danger
+          %i.i.i-plus.icon

@@ -1,0 +1,67 @@
+= link_to url_for(:back), class: "btn btn-default no-text-shadow", style: "position:absolute; top:30px; left:30px;" do
+  %i.i.i-arrow-left
+  Back to Pipeline
+.panel-body
+  .row
+    .col-sm-4.col-sm-offset-4
+      = form_for(@deal, html: { class: "form-horizontal" }) do |f|
+        - if @deal.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@deal.errors.count, "error")
+              prohibited this deal from being saved:
+            %ul
+              - @deal.errors.full_messages.each do |msg|
+                %li= msg
+        %h1.bold.text-center{:style => "color:#c7c7c7; padding: 50px"} pipeline
+        %h3 Property Information
+        %p.text-muted
+          Enter the property's basic information.
+        .panel
+          .p-xl
+            %p.m-b-lg
+              You're just
+              %span.bold a few steps
+              away from setting up your Pipeline deal.
+              First let us know what your property name, type, and class is.
+            .form-group
+              = f.label :property_name, "Property Name:", class: "col-sm-3 control-label bold"
+              .col-sm-9
+                = f.text_field :property_name, class: "form-control", placeholder: "Your property name"
+            .line.b-b.b-light.line-lg
+            .form-group
+              = f.label :property_type, "Property Type:", class: "col-sm-3 control-label bold"
+              .col-sm-9
+                .btn-group{"data-toggle" => "buttons"}
+                  - @property_type.each do |type|
+                    %label.btn.btn-lg.btn-default.no-text-shadow
+                      = f.radio_button :property_type, type.id
+                      = type.name
+            .line.b-b.b-light.line-lg
+            .form-group
+              = f.label :property_class, "Property Class:", class: "col-sm-3 control-label bold"
+              .col-sm-9
+                .btn-group.m-r
+                  %button.btn.btn-lg.btn-default.dropdown-toggle.no-text-shadow{"data-toggle" => "dropdown"}
+                    %span.dropdown-label{"data-placeholder" => "Please select", :style => "margin-right:50px;"} Select
+                    %span.caret{:style => "margin-left:30px;"}
+                  %ul#class_dropdown.dropdown-menu.dropdown-select
+                    %li
+                      %a{:href => "#"}
+                        = f.radio_button :property_class, "A"
+                        = "A"
+                    %li
+                      %a{:href => "#"}
+                        = f.radio_button :property_class, "B"
+                        = "B"
+                    %li
+                      %a{:href => "#"}
+                        = f.radio_button :property_class, "C"
+                        = "C"
+            .line.b-b.b-light.line-lg
+            .form-group
+              .col-sm-12
+                = f.submit "Continue", class: "btn btn-danger btn-shadow pull-right"
+        / end panel
+      %p.text-muted
+        Need Help? #{link_to "Just ask us.", "#", class: "blue"}

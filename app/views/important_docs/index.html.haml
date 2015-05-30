@@ -1,0 +1,74 @@
+#feedback
+.b-b.bg-white.p-xl
+  .row
+    .col-sm-12
+      = form_for [@deal, ImportantDoc.new] do |f|
+        %h3{:style => "margin-top:0;"} Important Documents
+        %p.text-muted.m-b-lg
+          Add all important documents related to this deal.
+        .form-group
+          .bootstrap-filestyle.input-group
+            %span.group-span-filestyle{:tabindex => "0"}
+              %label.btn.btn-default.no-text-shadow{:for => "filestyle-0"}
+                %i.i.i-file-plus
+                Upload file
+          = f.file_field :doc_files, as: :file, class: "filestyle", style: "position:fixed; left:-500px;", id: "filestyle-0", data: {icon: "false", classbutton: "btn btn-default", classinput: "form-control inline v-middle input-s"}, tabindex: "-1"
+        = f.submit "Add", class: "btn btn-danger btn-shadow"
+.p-xl
+  - if @deal.important_docs.any?
+    .row.text-center
+      .col-lg-3
+        .panel.padder-v.item
+          .h1.font-thin.h1= @docs.count
+          %span.text-muted.text-xs Important Documents for
+          %br/
+          %span.text-muted.text-xs.bold.uppercase= @deal.property_name
+      .col-lg-3
+        .panel.padder-v.item
+          .h1.font-thin.h1= @docs.count
+          %span.text-muted.text-xs Total Document Size
+          %br/
+          %span.text-muted.text-xs.bold.uppercase= @deal.property_name
+    .div-table.box-shadow
+      .div-table-head.bold.box-shadow
+        .row
+          .col-sm-3
+            File Name
+          .col-sm-3
+            Size
+          .col-sm-3
+            Uploaded
+          .col-sm-3.text-right
+            Action
+      .div-table-body
+        - @docs.each do |doc|
+          .row
+            .col-sm-3.bold
+              %i.i.i-images
+              = doc.doc_files_file_name
+            .col-sm-3
+              = (doc.doc_files_file_size/1000).round(3)
+              KB
+            .col-sm-3
+              = time_ago_in_words(doc.updated_at)
+              ago
+            .col-sm-3
+              %span.pull-right
+                %a{:href => ""}
+                  %i.fa.fa-fw.m-r-xs.fa-pencil.text-info
+                %a{"data-target" => "#doc#{doc.id}", "data-toggle" => "modal", :href => ""}
+                  %i.i.i-trashcan.text-danger
+            / Modal
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "doc#{doc.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog.modal-dialog-sm
+                .modal-content
+                  .modal-header
+                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                    %h4#myModalLabel.modal-title Are you sure?
+                  .modal-body
+                    Once the page is deleted, it's gone forever!
+                  .modal-footer
+                    %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                    = link_to "Delete", [@deal, doc], method: :delete, class: "btn btn-danger btn-shadow"
+            / end modal
+          / end row

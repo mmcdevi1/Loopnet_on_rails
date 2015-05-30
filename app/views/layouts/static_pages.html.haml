@@ -1,0 +1,11 @@
+!!!
+%html
+  %body
+    = render 'layouts/head'
+    = render 'layouts/header'
+    = render 'layouts/flash'
+    - if user_signed_in?
+      = render 'layouts/aside'
+    #content.app-content{:role => "main"}
+      = yield
+    = render 'layouts/footer'

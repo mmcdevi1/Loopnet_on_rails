@@ -1,0 +1,23 @@
+!!!
+%html
+  %body
+    = render 'layouts/head'
+    %section.vbox
+      - flash.each do |type, message|
+        #alert-fadeout{:class => "alert #{flash_class type}"}
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+          = message
+      %section
+        %section.hbox.stretch
+          %section#content
+            %section.hbox.stretch
+              %section
+                %section.vbox= yield
+                / end vbox
+              / end section
+            / end hbox stretch
+          / end id content
+        / end hbox stretch
+      / end section
+    / end vbox
+    = render 'layouts/footer'

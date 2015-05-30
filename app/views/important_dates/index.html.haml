@@ -1,0 +1,68 @@
+#feedback
+.b-b.bg-white.p-xl
+  .row
+    .col-sm-12
+      = form_for [@deal, ImportantDate.new], html: { class: "form-inline" } do |f|
+        %h3{:style => "margin-top:0;"}
+          Important Dates
+        %p.text-muted.m-b-lg
+          Add all important dates related to this deal.
+        .line.b-b.b-light.line-lg
+        .form-group
+          = f.text_field :title, class: "form-control input-sm", placeholder: "Title"
+        .form-group
+          = f.text_field :date, class: "datepicker-input form-control input-sm", placeholder: "Date"
+        = f.submit "Add", class: "btn btn-danger btn-shadow"
+.p-xl
+  - if @deal.important_dates.any?
+    .row.text-center
+      .col-lg-3
+        .panel.padder-v.item
+          .h1.font-thin.h1= @dates.count
+          %span.text-muted.text-xs Important Dates for
+          %br/
+          %span.text-muted.text-xs.bold.uppercase= @deal.property_name
+    %h4.text-muted Uploaded Dates
+    .div-table.box-shadow
+      .div-table-head.bold.box-shadow
+        .row
+          .col-sm-3
+            Project
+          .col-sm-3
+            Date
+          .col-sm-3
+            Uploaded
+          .col-sm-3.text-right
+            Action
+      .div-table-body
+        - @dates.each do |date|
+          .row
+            .col-sm-3.bold
+              = date.title
+            .col-sm-3
+              = date.date
+            .col-sm-3
+              = time_ago_in_words(date.updated_at)
+              ago
+            .col-sm-3
+              %span.pull-right
+                %a{:href => ""}
+                  %i.fa.fa-fw.m-r-xs.fa-pencil.text-info
+                %a{"data-target" => "#date#{date.id}", "data-toggle" => "modal", :href => ""}
+                  %i.i.i-trashcan.text-danger
+            / Modal
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "date#{date.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog.modal-dialog-sm
+                .modal-content
+                  .modal-header
+                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                    %h4#myModalLabel.modal-title Are you sure?
+                  .modal-body
+                    Once the page is deleted, it's gone forever!
+                  .modal-footer
+                    %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                    = link_to "Delete", [@deal, date], method: :delete, class: "btn btn-danger btn-shadow"
+            / end modal
+          / end row
+  - else
+    %p No dates added!

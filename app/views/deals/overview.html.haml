@@ -1,0 +1,55 @@
+= form_for(@deal, html: { id: "address_form" }, remote: true ) do |f|
+  .p-xl
+    .add-page
+      .row
+        .col-sm-6
+          - if @deal.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@deal.errors.count, "error")
+                prohibited this deal from being saved:
+              %ul
+                - @deal.errors.full_messages.each do |msg|
+                  %li= msg
+          %h3{:style => "margin-top:0"} Overview
+          %p.text-muted.m-b-lg
+            Enter the property's basic information.
+          .form-group
+            = f.label :deal_title, "Title"
+            = f.text_field :deal_title, class: "form-control"
+            %p.text-muted Descriptive title of the deal.
+            #test
+          .form-group
+            = f.label :deal_summary, "Summary"
+            = f.text_area :deal_summary, id: "some-textarea", class: "wysihtml5 form-control"
+          .actions
+            = f.submit "Save", class: "btn btn-success", style: "display:none"
+  :javascript
+    $(document).ready(function() {
+
+      $('input').change(function() {
+
+        $('#address_form').submit(); 
+        $('#feedback').show();     
+        $('#feedback').text("saved").fadeOut('slow');
+
+      });
+
+      $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+        var val = $('iframe.wysihtml5-sandbox').contents().find('body').html();
+        $('#some-textarea').html(function() {
+          $(this).html(val);
+          $('#address_form').submit(); 
+        });
+      });
+
+      $('#continue-btn').click(function() {
+        $('#address_form').submit(); 
+      });
+
+      $('.nav-main li a').click(function() {
+        $('#address_form').submit();
+      });
+     
+
+    });

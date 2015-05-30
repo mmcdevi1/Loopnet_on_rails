@@ -1,0 +1,91 @@
+#feedback
+= form_for(@deal, html: { id: "address_form" }, remote: true) do |f|
+  .p-xl
+    .add-page
+      .row
+        .col-sm-6
+          - if @deal.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@deal.errors.count, "error")
+                prohibited this deal from being saved:
+              %ul
+                - @deal.errors.full_messages.each do |msg|
+                  %li= msg
+          %h3{:style => "margin-top:0"} Property Information
+          %p.text-muted.m-b-lg
+            Enter the property's basic information.
+          .form-group
+            = f.label :property_name
+            = f.text_field :property_name, class: "form-control"
+          .form-group
+            = f.label :property_type
+            .btn-group{"data-toggle" => "buttons"}
+              - @property_type.each do |type|
+                %label{:class => "btn btn-lg btn-default no-text-shadow #{property_type_active(type)}"}
+                  = f.radio_button :property_type, type.id
+                  = type.name
+          .form-group
+            = f.label :property_class
+            .btn-group.m-r
+              %button.btn.btn-lg.btn-default.dropdown-toggle.no-text-shadow{"data-toggle" => "dropdown"}
+                %span.dropdown-label{"data-placeholder" => "Please select", :style => "margin-right:50px;"}= property_class
+                %span.caret{:style => "margin-left:30px;"}
+              %ul#class_dropdown.dropdown-menu.dropdown-select
+                %li
+                  %a{:href => "#"}
+                    = f.radio_button :property_class, "A"
+                    = "A"
+                %li
+                  %a{:href => "#"}
+                    = f.radio_button :property_class, "B"
+                    = "B"
+                %li
+                  %a{:href => "#"}
+                    = f.radio_button :property_class, "C"
+                    = "C"
+          .form-group
+            = f.label :owner_name
+            = f.text_field :owner_name, class: "form-control"
+          .form-group
+            = f.label :floors
+            = f.text_field :floors, class: "form-control"
+          .form-group
+            = f.label :sf, "Square footage"
+            = f.text_field :sf, class: "form-control"
+          .form-group
+            = f.label :year_built
+            = f.text_field :year_built, class: "form-control"
+          .form-group
+            = f.label :percent_leased
+            = f.text_field :percent_leased, class: "form-control"
+          .form-group
+          = f.submit "Save", class: "btn btn-success", style: "display:none"
+:javascript
+  $(document).ready(function() {
+
+    $('input').change(function() {
+
+      $('#address_form').submit(); 
+      $('#feedback').show();     
+      $('#feedback').text("saved").fadeOut('slow');
+
+    });
+
+    $('#class_dropdown li a').click(function() {
+      $(this).children().removeClass("checked");
+      $(this).children().addClass("checked");
+      if ($(this).is(':checked')) {
+        $('#address_form').submit(); 
+        $('#feedback').show();     
+        $('#feedback').text("saved").fadeOut('slow');
+      }
+      
+    });
+
+    $("input[name='demo3']").TouchSpin({
+      min: 0,
+      max: 10000000000
+    });
+
+  });

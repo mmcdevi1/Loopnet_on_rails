@@ -1,0 +1,28 @@
+/ Modal
+= form_for [Contact.new] do |builder|
+  #contact_modal_form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h4#myModalLabel.modal-title New Contact
+        .modal-body
+          .form-group
+            = builder.label :full_name, "Full Name"
+            = builder.text_field :full_name, class: "form-control"
+          .form-group
+            = builder.label :company
+            = builder.text_field :company, class: "form-control"
+          .form-group
+            = builder.label :email
+            = builder.text_field :email, class: "form-control"
+          .form-group
+            = builder.label :phone_number
+            = builder.text_field :phone_number, class: "form-control"
+          .form-group
+            = builder.label :job_title
+            = builder.text_field :job_title, class: "form-control"
+        .modal-footer
+          %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+          = builder.submit "Save", class: "btn btn-danger btn-shadow"
+  / end modal

@@ -20,7 +20,7 @@ gem "htmlentities"
 gem 'truncate_html'
 gem 'acts_as_list'
 gem 'faker'
-gem 'will_paginate', "~> 3.0.4" 
+gem 'will_paginate', "~> 3.0.4"
 gem 'bootstrap-will_paginate'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -28,21 +28,25 @@ gem 'devise'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
-# gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'state_machine'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'private_pub'
 gem 'thin'
+gem 'haml-rails'
+gem 'fabrication'
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 group :development, :test do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'rspec-rails'
   gem 'sqlite3',     '1.3.9'
-  gem 'byebug',      '3.4.0'
-  gem 'web-console', '2.0.0.beta3'
-  gem 'spring',      '1.1.3'
-  gem "rspec-rails"
-  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :test do

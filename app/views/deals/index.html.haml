@@ -1,0 +1,28 @@
+.p-xl
+  %section.hbox.stretch
+    %aside
+      %section.scrollable.w-f
+        %table.table.bold.uppercase
+          %thead
+            %tr
+              %th Property Name
+              %th Owner
+              %th Space Type
+              %th Views
+              %th Avg View Time (min)
+              %th Most Active User
+              %th Percentage of Likes (%)
+              %th Added to Pipeline (%)
+              %th Status
+          %tbody
+            - @deals.each do |deal|
+              %tr
+                %td= deal.property_name
+                %td= deal.owner_name
+                %td= property_type(deal)
+                %td= deal.state
+                %td= deal.city
+                %td= deal.zipcode
+                %td= link_to 'Show', deal
+                %td= link_to 'Edit', property_deal_path(deal)
+                %td= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' }

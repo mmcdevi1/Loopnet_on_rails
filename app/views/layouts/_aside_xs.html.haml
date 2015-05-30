@@ -1,0 +1,8 @@
+%aside.bg-dark.lter.b-r.aside.hidden-print.nav-xs
+  %section.vbox
+    %nav.nav-primary.hidden-xs
+    - unless params[:action] == "index" && params[:controller] == "deals"
+      %footer.footer.hidden-xs.no-padder.text-center-nav-xs
+        %a#toggle.btn.btn-icon.icon-muted.btn-inactive.m-l-xs.m-r-xs.active{"data-toggle" => "class:nav-xs", :href => "#nav"}
+          %i.i.i-circleleft.text
+          %i.i.i-circleright.text-active

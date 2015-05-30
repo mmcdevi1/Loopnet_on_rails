@@ -1,0 +1,22 @@
+!!!
+%html
+  %body
+    = render 'layouts/head'
+    = render 'layouts/header'
+    = render 'layouts/flash'
+    = render 'layouts/aside'
+    #content.app-content{:role => "main"}
+      #fixedheader2.wrapper.bg-white.b-b.box-shadow.fixedheader
+        .pull-left
+          %span.bold.text-muted.deals-breadcrumb
+            Deals / #{@deal.property_name}
+        .btn-toolbar
+          = form_for(@deal) do |f|
+            = f.hidden_field :publish, value: true
+            = f.submit "Publish", class: "btn btn-sm btn-info btn-shadow pull-right"
+      .hbox.hbox-auto-xs.hbox-auto-sm{"ng-controller" => "MailCtrl", :style => "padding-top:61px"}
+        .col.w-md.bg-white.b-r.bg-auto
+          = render 'layouts/aside/brokerform_aside'
+        .col
+          = yield
+    = render 'layouts/footer'

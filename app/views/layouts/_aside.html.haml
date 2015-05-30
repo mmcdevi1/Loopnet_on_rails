@@ -1,0 +1,55 @@
+/ aside
+%aside#aside.app-aside.hidden-xs.bg-offwhite{:style => "position:fixed; height:100%;"}
+  .aside-wrap
+    .navi-wrap
+      / nav
+      %nav.navi.clearfix{:style => "padding:20px", "ui-nav" => ""}
+        = add_new_deal_btn
+        %ul.nav
+          %li.hidden-folded.m-b-sm.text-xs.nav-sm-title
+            %span Menu
+          %li
+            = link_to root_path, class: "auto", title: "Dashboard" do
+              %i.i.i-statistics
+              %span Dashboard
+          %li
+            %a.auto{:href => ""}
+              %i.i.i-mail2
+              %span Inbox
+          %li
+            = link_to market_path, class: "auto", title: "Market" do
+              %b.badge.bg-info.pull-right= Deal.where(publish: true).count
+              %i.i.i-chart
+              %span Market
+          %li
+            = link_to deals_path, class: "auto", title: "My Pipeline" do
+              %i.i.i-paperplane
+              %span My Pipeline
+          %li
+            %a.auto{:href => ""}
+              %i.i.i-calendar
+              %span Calendar
+          %li
+            = link_to contacts_path, class: "auto", title: "Contacts" do
+              %i.i.i-bubble
+              %span Contacts
+          %li.hidden-folded.m-t-lg.m-b-sm.text-xs.nav-sm-title
+            %span Settings
+          %li
+            = link_to "#", class: "auto", title: "Dashboard" do
+              %i.i.i-statistics
+              %span Account
+          %li
+            %a.auto{:href => ""}
+              %i.i.i-mail2
+              %span Integration
+          %li
+            = link_to "#", class: "auto", title: "Market" do
+              %i.i.i-chart
+              %span Notification
+          %li
+            = link_to "#", class: "auto", title: "My Pipeline" do
+              %i.i.i-paperplane
+              %span Billing
+      / nav
+/ / aside

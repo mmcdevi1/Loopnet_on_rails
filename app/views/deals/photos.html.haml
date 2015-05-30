@@ -1,0 +1,88 @@
+= form_for(@deal, html: { id: "address_form" }, remote: true, multipart: true ) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        .row
+          .col-md-8.col-md-offset-2
+            - if @deal.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@deal.errors.count, "error")
+                  prohibited this deal from being saved:
+                %ul
+                  - @deal.errors.full_messages.each do |msg|
+                    %li= msg
+            %h1 Upload Photos
+            = f.file_field :deal_images
+          / end parent
+          .actions
+            = f.submit "Save", class: "btn btn-success", style: ""
+  :javascript
+    $(document).ready(function() {
+
+      $('input').change(function() {
+
+        $('#address_form').submit(); 
+        $('#feedback').show();     
+        $('#feedback').text("saved").fadeOut('slow');
+
+      });
+
+      
+
+      $('#continue-btn').click(function() {
+        $('#address_form').submit(); 
+      });
+
+      $('.nav-main li a').click(function() {
+        $('#address_form').submit();
+      });
+
+      
+     
+
+    });
+
+    function add_fields(link, association, content) {
+          var new_id = new Date().getTime();
+          var regexp = new RegExp("new_" + association, "g");
+          $(link).parent().append(content.replace(regexp, new_id));
+          var id = "deal_image_galleries_attributes_" + new_id + "_deal_images";
+          
+          // File submit gets clicked automatically after Add Image btn is clicked on Availability page
+          $("#" + id).click();
+          $(".parent > .preview-col:last").hide();
+          $(".parent > .preview-col > .fields > .upload-preview:last img").addClass(id);
+     
+
+          // Preview image on Upload Photos page before submit
+          var preview = $(".upload-preview img." + id);
+          // File input change on Availability page
+          $("#" + id).change(function(event){
+              var input = $(event.currentTarget);
+              var file = input[0].files[0];
+              var reader = new FileReader();
+
+              reader.onload = function(e){
+                  image_base64 = e.target.result;
+                  preview.attr("src", image_base64);
+              };
+
+              reader.readAsDataURL(file);  
+
+              preview.addClass('preview-img-border');
+             $(".parent > .preview-col:last").show();
+          });     
+
+          
+
+      }
+  :css
+    #display-none-preview > .preview-col:first-of-type {
+      width: 0px;
+    }
+    #display-none-preview > .preview-col:first-of-type > .fields > .upload-preview,
+    #display-none-preview > .preview-col:first-of-type > .fields > .row > .col-md-12 > .btn-group {
+      display: none;
+      width: 0px;
+    }

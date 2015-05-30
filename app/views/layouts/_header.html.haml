@@ -1,0 +1,81 @@
+%body
+  .app.app-header-fixed
+    / header
+    %header#header.app-header.navbar{:role => "menu"}
+      / navbar header
+      / / navbar header
+      / navbar collapse
+      .collapse.pos-rlt.navbar-collapse.bg-white.b-b.box-shadow
+        / buttons
+        .nav.navbar-nav.hidden-xs
+          %a.navbar-brand.text-lt{:href => "#/"}
+            %i.i.i-chat2.text-info{:style => "position:relative; top:3px;"}
+        / / buttons
+        / nabar right
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-bell.fa-fw
+                %span.visible-xs-inline Notifications
+                %span.badge.badge-sm.up.bg-danger.pull-right-xs 2
+              / dropdown
+              .dropdown-menu.w-xl.animated.fadeInUp
+                .panel.bg-white
+                  .panel-heading.b-light.bg-light
+                    %strong
+                      You have
+                      %span 2
+                      notifications
+                  .list-group
+                    %a.media.list-group-item{:href => ""}
+                      %span.pull-left.thumb-sm
+                        = image_tag('a5.jpg')
+                      %span.media-body.block.m-b-none
+                        Use awesome animate.css
+                        %br/
+                        %small.text-muted 10 minutes ago
+                    %a.media.list-group-item{:href => ""}
+                      %span.media-body.block.m-b-none
+                        1.0 initial released
+                        %br/
+                        %small.text-muted 1 hour ago
+                  .panel-footer.text-sm
+                    %a.pull-right{:href => ""}
+                      %i.fa.fa-cog
+                    %a{"data-toggle" => "class:show animated fadeInRight", :href => "#notes"} See all the notifications
+              / / dropdown
+            %li.dropdown
+              %a.dropdown-toggle.clear{"data-toggle" => "dropdown", :href => "#"}
+                %span.thumb-sm.avatar.pull-right.m-t-n-sm.m-b-n-sm.m-l-sm
+                  = image_tag('a5.jpg')
+                  %i.on.md.b-white.bottom
+                %span.hidden-sm.hidden-md= full_name
+                %i.i.i-arrow-down5
+              / dropdown
+              %ul.dropdown-menu.animated.fadeInRight.w
+                %li.wrapper.b-b.m-b-sm.bg-light.m-t-n-xs
+                  %div
+                    %p 300mb of 500mb used
+                  .progress.progress-xs.m-b-none.dker
+                    .progress-bar.progress-bar-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+                %li
+                  %a{:href => ""}
+                    %span.badge.bg-danger.pull-right 30%
+                    %span Settings
+                %li
+                  %a{"ui-sref" => "app.page.profile"} Profile
+                %li
+                  %a{"ui-sref" => "app.docs"}
+                    %span.label.bg-info.pull-right new
+                    Help
+                %li.divider
+                %li
+                  = link_to "Logout", logout_path
+              / / dropdown
+          - else
+            %li= link_to "Login", new_user_session_path
+            %li= link_to "Register", register_path
+        / / navbar right
+      / / navbar collapse
+    / / header

@@ -1,0 +1,72 @@
+%body
+  %header#fixedheader.header.bg-white.b-b.clearfix.p-md.fixedheader.box-shadow{:style => "position:fixed;  z-index:1000;"}
+    .row
+      .col-sm-4
+        %button#filter_btn.btn.btn-sm.btn-default.no-text-shadow{:type => "button"}
+          %i.i.i-list2
+          Expand Filters
+      .col-sm-4
+      .col-sm-4.text-right
+  %section.filters.bg-white.b-b.top61
+    .p-xl
+      .brokers
+        .row
+          .col-sm-3
+            Brokers
+          .col-sm-9
+            Brokers dropdown
+  %section.scrollable.wrapper
+    .panel-body
+      %p.bold
+        Showing
+        %span.blue
+          = @deals.all.count
+        of the best properties for you
+      - @deals.each do |deal|
+        %p.market-time-ago
+          Added #{time_ago_in_words(deal.created_at)} ago
+        .market-widget{:id => "#{dom_id(deal)}"}
+          .market-widget-top
+            .row
+              .col-sm-6
+                %h3= link_to deal.property_name, deal, class: "blue"
+                %p.market-time-ago
+                  = deal.city
+                  , #{deal.state}#{deal.owner_name}
+              .col-sm-6
+                .pull-right.text-right
+                  %span.text-muted Broker:
+                  %br/
+                  = deal.user.firstname
+                  = deal.user.lastname
+          .market-widget-content
+            .clearfix
+              .market-widget-left
+                = image_tag('office.jpg', class: "img-responsive")
+              .market-widget-right
+                %table.table.market.text-center
+                  %thead.market-table
+                    %tr
+                      %td Offering Type
+                      %td Annual Return
+                      %td Term
+                      %td Space Type
+                      %td Class
+                      %td % Leased
+                  %tbody.market-table
+                    %tr
+                      %td Equity
+                      %td 12%
+                      %td 24 mo
+                      %td Office
+                      %td= deal.property_class
+                      %td= deal.percent_leased
+                .pull-right{:style => "padding:10px;"}
+                  = add_to_pipeline_btn(deal)
+  :javascript
+    $(document).ready(function() {
+      $("#filter_btn").click(function() {
+        $(".filters").slideToggle();
+        $(".scrollable.wrapper").toggleClass("top61");
+      });
+    });

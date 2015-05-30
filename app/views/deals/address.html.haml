@@ -1,0 +1,51 @@
+#feedback
+.p-xl
+  .add-page
+    .row
+      .col-sm-6
+        = form_for(@deal, html: { id: "address_form" }, remote: true ) do |f|
+          - if @deal.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@deal.errors.count, "error")
+                prohibited this deal from being saved:
+              %ul
+                - @deal.errors.full_messages.each do |msg|
+                  %li= msg
+          %h3{:style => "margin-top:0"} Property Address
+          %p.text-muted.m-b-lg
+            Enter the property's address.
+          .form-group
+            = f.label :property_address, "Address"
+            = f.text_field :property_address, class: "form-control"
+          .form-group
+            = f.label :city
+            = f.text_field :city, class: "form-control"
+          .form-group
+            = f.label :state, "State"
+            .btn-group.m-r
+              %button.btn.btn-lg.btn-default.dropdown-toggle.no-text-shadow{"data-toggle" => "dropdown"}
+                %span.dropdown-label{"data-placeholder" => "Please select"}= state_select
+                %span.caret{:style => "margin-left:30px;"}
+              %ul.dropdown-menu.dropdown-select.max-height-400= render 'state_dropdown', :f => f
+          .form-group
+            = f.label :zipcode, "Zipcode"
+            = f.text_field :zipcode, class: "form-control"
+          .actions
+            = f.submit "Save", class: "btn btn-success", style: "display:none"
+:javascript
+  $(document).ready(function() {
+
+    $('input').change(function() {
+
+      $('#address_form').submit(); 
+      $('#feedback').show();     
+      $('#feedback').text("Saved").fadeOut('slow');
+
+    });
+
+    $('#continue-btn').click(function() {
+      $('#address_form').submit(); 
+    });
+
+  });

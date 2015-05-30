@@ -1,0 +1,20 @@
+.p-xl.bg-white.b-b
+  %h3{:style => "margin-top:0;"} Contacts
+  %p.text-muted.m-b-lg
+    Select all contacts for this deal.
+  = form_for [@deal, ContactForDeal.new] do |f|
+    .form-group
+      .btn-group.m-r
+        %button.btn.btn-lg.btn-default.dropdown-toggle.no-text-shadow{"data-toggle" => "dropdown"}
+          %span.dropdown-label{"data-placeholder" => "Please select"} Select
+          %span.caret{:style => "margin-left:30px;"}
+        %ul.dropdown-menu.dropdown-select.max-height-400
+          - @contacts.each do |contact|
+            %li
+              %a{:href => "#"}
+                = f.radio_button :contact_id, contact.id, id: "contact_radio_#{contact.id}"
+                = contact.full_name
+      = f.submit "Add", class: "btn btn-danger btn-lg btn-shadow"
+  / end form
+.p-xl
+  = render(:partial => 'table', :collection => @contact_for_deals) || 'No contacts added to this deal.'

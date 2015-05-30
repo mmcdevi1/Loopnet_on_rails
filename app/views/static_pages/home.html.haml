@@ -1,0 +1,182 @@
+- if user_signed_in?
+  .app-content-body
+    .hbox.hbox-auto-xs.hbox-auto-sm{"ng-init" => "\n    app.settings.asideFolded = false; \n    app.settings.asideDock = false;\n  "}
+      / main
+      .col
+        / main header
+        %h3
+          Welcome back #{full_name}
+        / / main header
+      / / main
+      / right col
+      .col.w-md.bg-white-only.b-l.bg-auto.no-border-xs
+        .nav-tabs-alt
+          %ul.nav.nav-tabs{:role => "tablist"}
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#follow"}
+                %i.glyphicon.glyphicon-user.text-md.text-muted.wrapper-sm
+            %li
+              %a{"data-toggle" => "tab", :href => "#chat"}
+                %i.glyphicon.glyphicon-comment.text-md.text-muted.wrapper-sm
+            %li
+              %a{"data-toggle" => "tab", :href => "#trans"}
+                %i.glyphicon.glyphicon-transfer.text-md.text-muted.wrapper-sm
+        .tab-content
+          #follow.tab-pane.active
+            .wrapper-md
+              .m-b-sm.text-md Who to follow
+              %ul.list-group.no-bg.no-borders.pull-in
+                %li.list-group-item
+                  %a.pull-left.thumb-sm.avatar.m-r{:herf => ""}
+                    = image_tag('a0.jpg', class: "img-circle")
+                    %i.on.b-white.bottom
+                  .clear
+                    %div
+                      %a{:href => ""} Chris Fox
+                    %small.text-muted Designer, Blogger
+                %li.list-group-item
+                  %a.pull-left.thumb-sm.avatar.m-r{:herf => ""}
+                    = image_tag('a0.jpg', class: "img-circle")
+                    %i.on.b-white.bottom
+                  .clear
+                    %div
+                      %a{:href => ""} Mogen Polish
+                    %small.text-muted Writter, Mag Editor
+                %li.list-group-item
+                  %a.pull-left.thumb-sm.avatar.m-r{:herf => ""}
+                    = image_tag('a0.jpg', class: "img-circle")
+                    %i.busy.b-white.bottom
+                  .clear
+                    %div
+                      %a{:href => ""} Joge Lucky
+                    %small.text-muted Art director, Movie Cut
+                %li.list-group-item
+                  %a.pull-left.thumb-sm.avatar.m-r{:herf => ""}
+                    = image_tag('a0.jpg', class: "img-circle")
+                    %i.away.b-white.bottom
+                  .clear
+                    %div
+                      %a{:href => ""} Folisise Chosielie
+                    %small.text-muted Musician, Player
+                %li.list-group-item
+                  %a.pull-left.thumb-sm.avatar.m-r{:herf => ""}
+                    = image_tag('a0.jpg', class: "img-circle")
+                    %i.away.b-white.bottom
+                  .clear
+                    %div
+                      %a{:href => ""} Aron Gonzalez
+                    %small.text-muted Designer
+              .text-center
+                %a.btn.btn-sm.btn-primary.padder-md.m-b{:href => ""} More Connections
+          #chat.tab-pane
+            .wrapper-md
+              .m-b-sm.text-md Chat
+              %ul.list-group.no-borders.pull-in.auto
+                %li.list-group-item
+                  %span.pull-left.thumb-sm.m-r
+                    %img.img-circle{:alt => "...", :src => "img/a1.jpg"}/
+                  %a.text-muted{:href => "", :target => ".app-aside-right", "ui-toggle-class" => "show"}
+                    %i.fa.fa-comment-o.pull-right.m-t-sm.text-sm
+                  .clear
+                    %div
+                      %a{:href => ""} Chris Fox
+                    %small.text-muted about 2 minutes ago
+                %li.list-group-item
+                  %span.pull-left.thumb-sm.m-r
+                    %img.img-circle{:alt => "...", :src => "img/a2.jpg"}/
+                  %a.text-muted{:href => "", :target => ".app-aside-right", "ui-toggle-class" => "show"}
+                    %i.fa.fa-comment-o.pull-right.m-t-sm.text-sm
+                  .clear
+                    %div
+                      %a{:href => ""} Amanda Conlan
+                    %small.text-muted about 2 hours ago
+                %li.list-group-item
+                  %span.pull-left.thumb-sm.m-r
+                    %img.img-circle{:alt => "...", :src => "img/a3.jpg"}/
+                  %a.text-muted{:href => "", :target => ".app-aside-right", "ui-toggle-class" => "show"}
+                    %i.fa.fa-comment-o.pull-right.m-t-sm.text-sm
+                  .clear
+                    %div
+                      %a{:href => ""} Dan Doorack
+                    %small.text-muted 3 days ago
+                %li.list-group-item
+                  %span.pull-left.thumb-sm.m-r
+                    %img.img-circle{:alt => "...", :src => "img/a4.jpg"}/
+                  %a.text-muted{:href => "", :target => ".app-aside-right", "ui-toggle-class" => "show"}
+                    %i.fa.fa-comment-o.pull-right.m-t-sm.text-sm
+                  .clear
+                    %div
+                      %a{:href => ""} Lauren Taylor
+                    %small.text-muted about 2 minutes ago
+          #trans.tab-pane
+            .wrapper-md
+              .m-b-sm.text-md Transaction
+              %ul.list-group.list-group-sm.list-group-sp.list-group-alt.auto.m-t
+                %li.list-group-item
+                  %span.text-muted Transfer to Jacob at 3:00 pm
+                  %span.block.text-md.text-info B 15,000.00
+                %li.list-group-item
+                  %span.text-muted Got from Mike at 1:00 pm
+                  %span.block.text-md.text-primary B 23,000.00
+                %li.list-group-item
+                  %span.text-muted Sponsored ORG at 9:00 am
+                  %span.block.text-md.text-warning B 3,000.00
+                %li.list-group-item
+                  %span.text-muted Send to Jacob at 8:00 am
+                  %span.block.text-md B 11,000.00
+        .padder-md
+          / streamline
+          .m-b.text-md Recent Activity
+          .streamline.b-l.m-b
+            .sl-item
+              .m-l
+                .text-muted 5 minutes ago
+                %p
+                  %a.text-info{:href => ""} Jessi
+                  commented your post.
+            .sl-item
+              .m-l
+                .text-muted 11:30
+                %p Join comference
+            .sl-item.b-success.b-l
+              .m-l
+                .text-muted 10:30
+                %p
+                  Call to customer
+                  %a.text-info{:href => ""} Jacob
+                  and discuss the detail.
+            .bg-info.wrapper-sm.m-l-n.m-r-n.m-b.r.r-2x
+              Create tasks for the team
+            .sl-item.b-primary.b-l
+              .m-l
+                .text-muted Wed, 25 Mar
+                %p
+                  Finished task
+                  = succeed "." do
+                    %a.text-info{:href => ""} Testing
+            .sl-item.b-warning.b-l
+              .m-l
+                .text-muted Thu, 10 Mar
+                %p Trip to the moon
+            .sl-item.b-info.b-l
+              .m-l
+                .text-muted Sat, 5 Mar
+                %p Prepare for presentation
+            .sl-item.b-l
+              .m-l
+                .text-muted Sun, 11 Feb
+                %p
+                  %a.text-info{:href => ""} Jessi
+                  assign you a task
+                  = succeed "." do
+                    %a.text-info{:href => ""} Mockup Design
+            .sl-item.b-l
+              .m-l
+                .text-muted Thu, 17 Jan
+                %p Follow up to close deal
+          / / streamline
+      / / right col
+- else
+  .container
+    %h1 Welcome to Pipeline
+    %h3 Please Sign In
